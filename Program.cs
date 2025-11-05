@@ -11,12 +11,12 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContextFactory<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
-var app = builder.Build();
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-    
-builder.Services.AddSingleton<AuthService>();
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

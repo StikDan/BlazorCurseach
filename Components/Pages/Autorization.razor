@@ -1,0 +1,32 @@
+@page "/autorization"
+@using BlazorCurseach.Models
+@using BlazorCurseach.Services
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ProtectedSessionStorage ProtectedSessionStore
+@rendermode RenderMode.InteractiveServer
+
+<div class="autorize-nodel">
+
+    <h2>Autorize please.</h2>
+
+    <EditForm Model="@ClientData" OnValidSubmit="SendDataAsync" FormName="AutorizeForm">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <label for="login">Login</label>
+        <InputText id="login" @bind-Value="ClientData.login"></InputText>
+        <label for="password">Password</label>
+        <InputText id="password" @bind-Value="ClientData.password"></InputText>
+        
+        <button type="submit">Enter </button>
+    </EditForm>
+</div>
+
+@code {
+    Client ClientData { get; set; } = new Client();
+
+    protected async Task SendDataAsync()
+    {
+        await ProtectedSessionStore.SetAsync("CurrentUser", ClientData);
+    }
+}
