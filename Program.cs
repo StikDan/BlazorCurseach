@@ -12,6 +12,13 @@ builder.Services.AddDbContextFactory<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddScoped<AuthService>();
+ 
+builder.Services.AddHttpClient();
+builder.Services.AddScoped(sp =>
+    new HttpClient
+    {
+        BaseAddress = new Uri("http://localhost:5195/")
+    }); 
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();

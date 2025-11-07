@@ -17,9 +17,9 @@ public class ClientController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<Client>> GetData()
+    public Task<List<Client>> GetData()
     {
-        return await Task.FromResult(_IClient.GetClientDetails());
+        return Task.FromResult(_IClient.GetClientDetails());
     }
 
     [HttpGet("{id}")]
