@@ -1,10 +1,9 @@
-@page "/"@login"/{idClient:int}"
+@page "/user/"
+@using BlazorCurseach.Models
 
 <h2>Welcome @login!</h2>
 
-
-
 @code {
-    
-
+    Client ClientData { get; set; } = new Client();
+    private string login => ClientData.login;
 }

@@ -1,12 +1,21 @@
 using BlazorCurseach.Data;
 using BlazorCurseach.Models;
+using BlazorCurseach.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
 namespace BlazorCurseach.Services;
 
-public class AuthService(AppDbContext appDbContext)
+public class AuthService : IClient 
 {
-    private readonly AppDbContext _appDbContext = appDbContext;
+    private readonly AppDbContext _context = new();
+    public AuthService(AppDbContext _context)
+    {
+        _context = context;
+    }
 
-    _context = _appDbContext;
+    public List<Client> GetUserDetails()
+    {
+        return _context.Users
+    }
 }

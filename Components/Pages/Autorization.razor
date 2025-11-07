@@ -3,8 +3,6 @@
 @using BlazorCurseach.Services
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
-@rendermode RenderMode.InteractiveServer
-@attribute [Authorize]
 
 <div class="autorize-nodel">
 
@@ -25,6 +23,11 @@
 
 @code {
     Client ClientData { get; set; } = new Client();
+
+    protected async Task LoadDataAsync()
+    {
+        var result = await ProtectedSessionStore.GetAsync<Client?>("CurrentUser");
+    }
 
     protected async Task SendDataAsync()
     {
