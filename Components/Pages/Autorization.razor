@@ -1,15 +1,16 @@
-@page "/autorization"
+@page "/authorization"
 @using BlazorCurseach.Models
 @using BlazorCurseach.Services
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 @rendermode RenderMode.InteractiveServer
+@attribute [Authorize]
 
 <div class="autorize-nodel">
 
-    <h2>Autorize please.</h2>
+    <h2>Authorize please.</h2>
 
-    <EditForm Model="@ClientData" OnValidSubmit="SendDataAsync" FormName="AutorizeForm">
+    <EditForm Model="@ClientData" OnValidSubmit="SendDataAsync" FormName="AuthorizeForm">
         <DataAnnotationsValidator />
         <ValidationSummary />
 

@@ -7,4 +7,6 @@ namespace BlazorCurseach.Services;
 public class AuthService(AppDbContext appDbContext)
 {
     private readonly AppDbContext _appDbContext = appDbContext;
+
+    _context = _appDbContext;
 }
