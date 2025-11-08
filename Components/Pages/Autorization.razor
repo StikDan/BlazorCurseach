@@ -17,16 +17,29 @@
         <label for="password">Password</label>
         <InputText id="password" @bind-Value="ClientData.password"></InputText>
         
-        <button type="submit">Enter </button>
+        <button type="submit" disabled="@isLoading" @onclick="@(() => { LoadDataAsync(); isLoading=true; })">
+            @if(isLoading)
+            {
+                <span>Entering...</span>
+            }
+            else
+            {
+                <span>Enter</span>
+            }
+        </button>
     </EditForm>
 </div>
+    <p>@CurrentUser</p>
 
 @code {
     Client ClientData { get; set; } = new Client();
+    bool isLoading = false;
+    private Client? CurrentUser;
 
     protected async Task LoadDataAsync()
     {
         var result = await ProtectedSessionStore.GetAsync<Client?>("CurrentUser");
+        CurrentUser = result.Success ? result.Value : null;
     }
 
     protected async Task SendDataAsync()

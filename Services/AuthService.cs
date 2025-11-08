@@ -8,21 +8,21 @@ namespace BlazorCurseach.Services;
 
 public class AuthService : IClient 
 {
-    private readonly AppDbContext _context;
+    private readonly AppDbContext _db;
 
-    public AuthService(AppDbContext context)
+    public AuthService(AppDbContext db)
     {
-        _context = context;
+        _db = db;
     }
 
     public List<Client> GetClientDetails()
     {
-        return _context.Clients.ToList();
+        return _db.Clients.ToList();
     }
 
     public Client GetClientData(int idClient)
     {
-        Client? client = _context.Clients.Find(idClient);
+        Client? client = _db.Clients.Find(idClient);
         if (client != null)
         {
             return client;
