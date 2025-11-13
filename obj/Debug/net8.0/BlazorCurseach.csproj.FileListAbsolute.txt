@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\BlazorCurseach\obj\Debug\net8.0\BlazorCurseach.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\BlazorCurseach\obj\Debug\net8.0\BlazorCurseach.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\BlazorCurseach\obj\Debug\net8.0\BlazorCurseach.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\BlazorCurseach\obj\Debug\net8.0\BlazorCurseach.AssemblyInfo.cs
+C:\Users\User\source\repos\BlazorCurseach\obj\Debug\net8.0\BlazorCurseach.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\BlazorCurseach\obj\Debug\net8.0\BlazorCurseach.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\source\repos\BlazorCurseach\obj\Debug\net8.0\BlazorCurseach.sourcelink.json

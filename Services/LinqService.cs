@@ -11,7 +11,7 @@ public class LinqService
 {
     private readonly AppDbContext _db;
 
-    public LinqData(AppDbContext db)
+    public LinqService(AppDbContext db)
     {
         _db = db;
     }

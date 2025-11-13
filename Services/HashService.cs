@@ -2,16 +2,15 @@ using System;
 using System.Text;
 using System.Security.Cryptography;
 using BlazorCurseach.Interfaces;
+using BlazorCurseach.Models;
 
 namespace BlazorCurseach.Services;
 
 public class HashService : IHash
 {
-    protected LinqService LinqService = new();
-
     public bool CheckHashSum(List<string> clientData)
     {
-        List<Client> dbClients = LinqService.SelectClients();
+        List<string> dbClients = LinqService.SelectClients();
         for(int i = 0; i <= dbClients.Count; i++)
         {
             if(dbClients[i] == clientData[i])
@@ -19,11 +18,10 @@ public class HashService : IHash
                 return true;
             }
         }
-
-        return true;
+        return false;
     }
 
-    public static string CalculateHashData(string nonHashData)
+    public string CalculateHashData(string nonHashData)
     {
         SHA1 sha1Hash = SHA1.Create();
         byte[] bytes = Encoding.UTF8.GetBytes(nonHashData);

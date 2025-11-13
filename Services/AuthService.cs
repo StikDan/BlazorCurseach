@@ -15,22 +15,12 @@ using BlazorCurseach.Interfaces;
 
 namespace BlazorCurseach.Services;
 
-public class AuthService : IClient
+public class AuthService
 {
-    private readonly ProtectedSessionStore _protectedSessionStore;
+    private readonly ProtectedSessionStorage _protectedSessionStorage;
 
-    public AuthService(ProtectedSessionStore protectedSessionStore)
+    public AuthService(ProtectedSessionStorage protectedSessionStorage)
     {
-        _protectedSessionStore = protectedSessionStore;
-    }
-
-    protected async Task LoadDataAsync()
-    {
-        var result = await ProtectedSessionStore.GetAsync<Client?>("CurrentUser");
-    }
-
-    protected async Task SendDataAsync()
-    {
-        await ProtectedSessionStore.SetAsync("CurrentUser", ClientData);
+        _protectedSessionStorage = protectedSessionStorage;
     }
 }

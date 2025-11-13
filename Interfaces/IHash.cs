@@ -8,5 +8,5 @@ namespace BlazorCurseach.Interfaces;
     public interface IHash 
     {
         public bool CheckHashSum(List<string> clientData);
-        public static string CalculateHashData(string nonHashData);
+        public string CalculateHashData(string nonHashData);
     }
