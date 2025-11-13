@@ -14,11 +14,6 @@ builder.Services.AddDbContextFactory<AppDbContext>(options =>
 builder.Services.AddScoped<AuthService>();
  
 builder.Services.AddHttpClient();
-builder.Services.AddScoped(sp =>
-    new HttpClient
-    {
-        BaseAddress = new Uri("http://localhost:5195/")
-    }); 
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -34,6 +29,8 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 app.UseStaticFiles();
 app.UseAntiforgery();

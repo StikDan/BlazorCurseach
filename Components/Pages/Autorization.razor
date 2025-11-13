@@ -1,14 +1,14 @@
 @page "/authorization"
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using BlazorCurseach.Models
 @using BlazorCurseach.Services
-@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
 <div class="autorize-nodel">
 
     <h2>Authorize please.</h2>
 
-    <EditForm Model="@ClientData" OnValidSubmit="SendDataAsync" FormName="AuthorizeForm">
+    <EditForm Model="@ClientData" OnValidSubmit="() => HandleClientData(ClientData.login, ClientData.password)" FormName="AuthorizeForm">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
@@ -17,33 +17,40 @@
         <label for="password">Password</label>
         <InputText id="password" @bind-Value="ClientData.password"></InputText>
         
-        <button type="submit" disabled="@isLoading" @onclick="@(() => { LoadDataAsync(); isLoading=true; })">
-            @if(isLoading)
-            {
-                <span>Entering...</span>
-            }
+        <button type="submit" disabled="@isLoading" @onclick="@isLoading=true">
+            @if(isLoading) 
+                { <span>Entering...</span> }
             else
-            {
-                <span>Enter</span>
-            }
+                { <span>Enter</span> }
         </button>
     </EditForm>
 </div>
-    <p>@CurrentUser</p>
 
 @code {
-    Client ClientData { get; set; } = new Client();
+    public Client ClientData { get; set; } = new();
+    public AuthService AuthService = new();
+    public HashService HashService = new();
+
     bool isLoading = false;
-    private Client? CurrentUser;
 
-    protected async Task LoadDataAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var result = await ProtectedSessionStore.GetAsync<Client?>("CurrentUser");
-        CurrentUser = result.Success ? result.Value : null;
+        if (firstRender)
+        {
+            isLoading = true;
+            await AuthService.LoadDataAsync();
+            StateHasChanged();
+        }
     }
-
-    protected async Task SendDataAsync()
+    
+    public List<string> HandleClientData(string login, string password)
     {
-        await ProtectedSessionStore.SetAsync("CurrentUser", ClientData);
+        List<string> clientData = new();
+
+        clientData.Add(login);
+        string hashPassword = HashService.HashData(password);
+        clientData.Add(hashPassword);
+        HashService.CheckHashSum(List<string> clientData);
+
     }
 }

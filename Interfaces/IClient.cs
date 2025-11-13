@@ -4,6 +4,5 @@ namespace BlazorCurseach.Interfaces;
 
     public interface IClient
     {
-        public List<Client> GetClientDetails();
-        public Client GetClientData(int idClient);
+        public List<string> HandleClientData(string login, string password)
     }

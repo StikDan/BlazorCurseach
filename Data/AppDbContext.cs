@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using BlazorCurseach.Models;
 using Microsoft.EntityFrameworkCore;
+using BlazorCurseach.Models;
 
 namespace BlazorCurseach.Data;
 
