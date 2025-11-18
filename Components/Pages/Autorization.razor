@@ -2,63 +2,71 @@
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using BlazorCurseach.Models
 @using BlazorCurseach.Services
-@inject ProtectedSessionStorage _protectedSessionStorage
+@inject ProtectedSessionStorage protectedSessionStorage
+@inject AuthService AuthService
+@inject HashService HashService
 
-<div class="autorize-nodel">
+<div class="autorize-model">
 
-    <h2>Authorize please.</h2>
+    <h2 class="authorize-title">Please authorize.</h2>
 
-    <EditForm Model="@ClientData" OnValidSubmit="() => HandleClientData(ClientData.login, ClientData.password)" FormName="AuthorizeForm">
+    <EditForm Model="@Client" OnValidSubmit="HandleClientData" FormName="AuthorizeForm">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
         <label for="login">Login</label>
-        <InputText id="login" @bind-Value="ClientData.login"></InputText>
+        <InputText id="login" @bind-Value="Client.login"></InputText><br>
         <label for="password">Password</label>
-        <InputText id="password" @bind-Value="ClientData.password"></InputText>
-        
-        <button type="submit" disabled="@isLoading" @onclick="() => isLoading=true">
-            @if(isLoading) 
-                { <span>Entering...</span> }
-            else
-                { <span>Enter</span> }
+        <InputText id="password" type="password" @bind-Value="Client.password"></InputText>
+
+        <button class="btn btn-success" id="autorize-button" type="submit" disabled="@isLoading" @onclick="() => EraseMessage()">
+        @if(isLoading)
+            { <span>Entering...</span> }
+        else
+            { <span>Enter</span> }
         </button>
     </EditForm>
+
+    @if (!string.IsNullOrEmpty(authErrorMessage))
+    {
+        <div class="alert alert-danger" id="auth-error">@authErrorMessage</div>
+    }
 </div>
 
 @code {
-    public Client ClientData { get; set; } = new();
-    public HashService HashService = new();
+    protected Client Client { get; set; } = new();
 
-    bool isLoading = false;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            isLoading = true;
-            await LoadDataAsync();
-            StateHasChanged();
-        }
-    }
-
-    protected async Task LoadDataAsync()
-    {
-        var result = await _protectedSessionStorage.GetAsync<Client?>("CurrentUser");
-    }
+    protected string authErrorMessage = "";
+    protected bool isValid = false;
+    protected bool isLoading = false;
 
     protected async Task SendDataAsync()
     {
-        await _protectedSessionStorage.SetAsync("CurrentUser", ClientData);
+        await protectedSessionStorage.SetAsync("CurrentUser", Client);
     }
-    
-    public List<string> HandleClientData(string login, string password)
-    {
-        List<string> clientData = new();
 
-        clientData.Add(login);
-        string hashPassword = HashService.CalculateHashData(password);
-        clientData.Add(hashPassword);
-        HashService.CheckHashSum(clientData);
+    protected async Task HandleClientData()
+    {
+        isLoading = true;
+
+        string hashPassword = HashService.CalculateHashData(Client.password);
+
+        Client.idClient = new Random().Next(1, 10000);
+        Client.password = hashPassword;
+
+        List<Client> clientData = new() { Client };
+
+        isValid = await AuthService.CheckValidClientAsync(clientData);
+        isLoading = false;
+
+        if(isValid)
+            await SendDataAsync();
+        else
+            authErrorMessage = "Wrong login or password!";
+    }
+
+    protected void EraseMessage()
+    {
+        authErrorMessage = "";
     }
 }

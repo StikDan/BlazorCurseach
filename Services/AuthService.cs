@@ -1,26 +1,44 @@
-/*
-1) В базе есть хешированные пароли SHA1 +
-2) При вводе в форму логина и пароля +
-3) логин отправляется на проверку вместе с паролем, +
-4) Хешируется пароль для проверки +
-5) Получение данных из базы 
-6) Проверка данных на валидность
-7) Если верно - записывать в сессию браузера
-8) Иначе - "Неправильный логин или пароль"
-*/
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using BlazorCurseach.Data;
 using BlazorCurseach.Models;
 using BlazorCurseach.Interfaces;
+//using HashService
 
 namespace BlazorCurseach.Services;
 
 public class AuthService
 {
     private readonly ProtectedSessionStorage _protectedSessionStorage;
+    private readonly AppDbContext _db;
 
-    public AuthService(ProtectedSessionStorage protectedSessionStorage)
+    LinqService LinqService { get; }
+
+    public AuthService(AppDbContext db, ProtectedSessionStorage protectedSessionStorage)
     {
         _protectedSessionStorage = protectedSessionStorage;
+        _db = db;
+
+        LinqService = new LinqService(_db);
+    }
+
+    public async Task<bool> CheckValidClientAsync(List<Client> clientData)
+    {
+        List<Client> dbClients = LinqService.SelectClients();
+
+        if (clientData == null || clientData.Count == 0)
+            return false;
+
+        Client inputClient = clientData[0];
+
+        for (int i = 0; i < dbClients.Count; i++)
+        {
+            if (dbClients[i].login == inputClient.login 
+                && dbClients[i].password == inputClient.password)
+            {
+                return await Task.FromResult(true);
+            }
+        }
+
+        return await Task.FromResult(false);
     }
 }

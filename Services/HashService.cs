@@ -8,19 +8,6 @@ namespace BlazorCurseach.Services;
 
 public class HashService : IHash
 {
-    public bool CheckHashSum(List<string> clientData)
-    {
-        List<string> dbClients = LinqService.SelectClients();
-        for(int i = 0; i <= dbClients.Count; i++)
-        {
-            if(dbClients[i] == clientData[i])
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public string CalculateHashData(string nonHashData)
     {
         SHA1 sha1Hash = SHA1.Create();

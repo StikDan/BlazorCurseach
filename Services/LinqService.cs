@@ -18,8 +18,6 @@ public class LinqService
 
     public List<Client> SelectClients()
     {
-        return _db.Clients
-            .Select(s => s)
-            .ToList();
+        return _db.Clients.ToList();
     }
 }

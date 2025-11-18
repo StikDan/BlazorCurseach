@@ -12,6 +12,8 @@ builder.Services.AddDbContextFactory<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<HashService>();
+builder.Services.AddScoped<LinqService>();
  
 builder.Services.AddHttpClient();
 
@@ -29,8 +31,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
 app.UseStaticFiles();
 app.UseAntiforgery();
