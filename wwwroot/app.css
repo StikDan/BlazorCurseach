@@ -1,3 +1,15 @@
+#login, #password {
+    display: block;
+}
+
+#autorize-button {
+    margin-top: 2%;
+}
+
+.alert-danger {
+    margin-top: 2%;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

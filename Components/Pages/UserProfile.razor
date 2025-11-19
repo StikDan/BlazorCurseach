@@ -1,9 +1,9 @@
-@page "/user/"
+@page "/profile"
 @using BlazorCurseach.Models
 
-<h2>Welcome @login!</h2>
+<h2>Welcome @Client.login!</h2>
 
 @code {
-    Client ClientData { get; set; } = new Client();
-    private string login => ClientData.login;
+    Client Client { get; set; } = new Client();
+    protected string login => Client.login;
 }

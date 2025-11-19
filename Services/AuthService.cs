@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using BlazorCurseach.Data;
 using BlazorCurseach.Models;
 using BlazorCurseach.Interfaces;
-//using HashService
 
 namespace BlazorCurseach.Services;
 

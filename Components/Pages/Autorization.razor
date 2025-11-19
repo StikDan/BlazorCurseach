@@ -60,9 +60,16 @@
         isLoading = false;
 
         if(isValid)
+        {
             await SendDataAsync();
+            authErrorMessage = $"Welcome {Client.login}!";
+            Client = new();
+        }
         else
+        {
+            Client = new();
             authErrorMessage = "Wrong login or password!";
+        }
     }
 
     protected void EraseMessage()
