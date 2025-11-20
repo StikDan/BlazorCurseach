@@ -3,8 +3,8 @@
 @using BlazorCurseach.Models
 @using BlazorCurseach.Services
 @inject ProtectedSessionStorage protectedSessionStorage
-@inject AuthService AuthService
-@inject HashService HashService
+@inject AuthService authService
+@inject HashService hashService
 
 <div class="autorize-model">
 
@@ -36,32 +36,28 @@
 @code {
     protected Client Client { get; set; } = new();
 
-    protected string authErrorMessage = "";
+    protected string clientKey = "CurrentClient";
     protected bool isValid = false;
     protected bool isLoading = false;
-
-    protected async Task SendDataAsync()
-    {
-        await protectedSessionStorage.SetAsync("CurrentUser", Client);
-    }
+    protected string authErrorMessage = "";
 
     protected async Task HandleClientData()
     {
         isLoading = true;
 
-        string hashPassword = HashService.CalculateHashData(Client.password);
+        string hashPassword = hashService.CalculateHashData(Client.password);
 
         Client.idClient = new Random().Next(1, 10000);
         Client.password = hashPassword;
 
         List<Client> clientData = new() { Client };
 
-        isValid = await AuthService.CheckValidClientAsync(clientData);
+        isValid = await authService.CheckValidClientAsync(clientData);
         isLoading = false;
 
         if(isValid)
         {
-            await SendDataAsync();
+            await authService.SendDataAsync(clientKey, Client);
             authErrorMessage = $"Welcome {Client.login}!";
             Client = new();
         }

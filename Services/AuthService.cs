@@ -20,6 +20,26 @@ public class AuthService
         LinqService = new LinqService(_db);
     }
 
+    public async Task SendDataAsync(string currentUser, Client Client)
+    {
+        await _protectedSessionStorage.SetAsync(currentUser, Client);
+    }
+
+    public async Task LoadDataAsync(string currentUser)
+    {
+        var result = await _protectedSessionStorage.GetAsync<Client?>(currentUser);
+    }
+
+    public async Task<bool> CheckSessionData()
+    {
+        string currentUser = "TestUser";
+        var result = LoadDataAsync(currentUser);
+        if(result == null)
+            return true;
+        else
+            return false;
+    }
+
     public async Task<bool> CheckValidClientAsync(List<Client> clientData)
     {
         List<Client> dbClients = LinqService.SelectClients();
