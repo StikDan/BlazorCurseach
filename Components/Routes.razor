@@ -1,18 +1,33 @@
-﻿@inject AuthService authService
+﻿@using BlazorCurseach.Services
+@inject AuthService authService
+@inject NavigationManager navigationManager
 
-@if(authService.CheckSessionData())
+<Router AppAssembly="typeof(Program).Assembly">
+    <Found Context="routeData">
+        <RouteView  RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <p>Sorry, there's nothing at this address.</p>
+    </NotFound>
+</Router>
+
+@code
 {
-    RedirectToPage("/Authorization");
-}
-else
-{
-    <Router AppAssembly="typeof(Program).Assembly">
-        <Found Context="routeData">
-            <RouteView  RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
-            <FocusOnNavigate RouteData="routeData" Selector="h1" />
-        </Found>
-        <NotFound>
-            <p>Sorry, there's nothing at this address.</p>
-        </NotFound>
-    </Router>
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            navigationManager.NavigateTo("authorization");
+        }
+        else
+        {
+            bool isAuthorized = await authService.IsStorageEmptyAsync();
+
+            if(!isAuthorized)
+            {
+                navigationManager.NavigateTo("authorization");
+            }
+        }
+    }
 }
