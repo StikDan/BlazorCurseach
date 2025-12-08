@@ -1,6 +1,9 @@
-﻿@using BlazorCurseach.Services
+﻿@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using BlazorCurseach.Services
 @inject AuthService authService
 @inject NavigationManager navigationManager
+@implements IDisposable
 
 <Router AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
@@ -14,20 +17,34 @@
 
 @code
 {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if(firstRender)
-        {
-            navigationManager.NavigateTo("authorization");
-        }
-        else
-        {
-            bool isAuthorized = await authService.IsStorageEmptyAsync();
+    protected bool isAuthorized = false;
 
-            if(!isAuthorized)
-            {
-                navigationManager.NavigateTo("authorization");
-            }
+    private async Task ToAuthRedirect()
+    {
+        var uri = navigationManager.Uri;
+        if (!uri.Contains("authorization"))
+        {
+            navigationManager.NavigateTo("authorization", forceLoad: true);
         }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        isAuthorized = await authService.IsStorageEmptyAsync();
+        if(isAuthorized == false)
+        {
+            await ToAuthRedirect();
+            navigationManager.LocationChanged += OnLocationChanged;
+        }
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        ToAuthRedirect();
+    }
+
+    public void Dispose()
+    {
+        navigationManager.LocationChanged -= OnLocationChanged;
     }
 }

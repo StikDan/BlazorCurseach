@@ -27,8 +27,8 @@ public class AuthService
 
     public async Task LoadDataAsync(string currentUser)
     {
-        await _protectedSessionStorage.GetAsync<Client?>(currentUser);
-    }
+        var result = await _protectedSessionStorage.GetAsync<Client?>(currentUser);
+    }   
 
     public async Task<bool> CheckValidClientAsync(List<Client> clientData)
     {
@@ -51,20 +51,12 @@ public class AuthService
         return await Task.FromResult(false);
     }
 
-    public async Task<bool> IsStorageEmptyAsync() //need async
+    public async Task<bool> IsStorageEmptyAsync()
     {
-        string currentUser = "CurrentUser";
-        var result = LoadDataAsync(currentUser);
+        string key = "CurrentClient";
+        var result = await _protectedSessionStorage.GetAsync<Client>(key);
 
-        if(result == null) //predicting thats a list
-        {
-            await Task.FromResult(true);
-            return true;
-        }
-        else
-        {
-            await Task.FromResult(false);
-            return false;
-        }
+        // If Success is false, there is no such item in session storage.
+        return !result.Success || result.Value == null;
     }
 }
