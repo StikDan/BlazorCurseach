@@ -18,29 +18,33 @@
 @code
 {
     protected bool isAuthorized = false;
+    protected bool isSessionEmpty = false;
 
-    private async Task ToAuthRedirect()
+    private async Task ToAuthRedirectAsync()
     {
         var uri = navigationManager.Uri;
-        if (!uri.Contains("authorization"))
+        if (!uri.Contains("login"))
         {
-            navigationManager.NavigateTo("authorization", forceLoad: true);
+            navigationManager.NavigateTo("login", forceLoad: true);
         }
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        isAuthorized = await authService.IsStorageEmptyAsync();
-        if(isAuthorized == false)
+        if(firstRender && !isAuthorized)
         {
-            await ToAuthRedirect();
-            navigationManager.LocationChanged += OnLocationChanged;
+            isSessionEmpty = await authService.IsStorageEmptyAsync();
+            if(isSessionEmpty)
+            {
+                await ToAuthRedirectAsync();
+                navigationManager.LocationChanged += OnLocationChanged;
+            }
         }
     }
 
     private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
     {
-        ToAuthRedirect();
+        ToAuthRedirectAsync();
     }
 
     public void Dispose()

@@ -1,4 +1,4 @@
-@page "/authorization"
+@page "/login"
 @using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using BlazorCurseach.Models
 @using BlazorCurseach.Services
@@ -8,7 +8,7 @@
 
 <div class="autorize-model">
 
-    <h2 class="authorize-title">Please authorize.</h2>
+    <h2 class="authorize-title">Login or Sign Up.</h2>
 
     <EditForm Model="@Client" OnValidSubmit="HandleClientData" FormName="AuthorizeForm">
         <DataAnnotationsValidator />
@@ -23,13 +23,13 @@
         @if(isLoading)
             { <span>Entering...</span> }
         else
-            { <span>Enter</span> }
+            { <span>Login</span> }
         </button>
     </EditForm>
 
-    @if (!string.IsNullOrEmpty(authErrorMessage))
+    @if (!string.IsNullOrEmpty(errorMessage))
     {
-        <div class="alert alert-danger" id="auth-error">@authErrorMessage</div>
+        <div class="alert alert-danger" id="auth-error">@errorMessage</div>
     }
 </div>
 
@@ -39,7 +39,7 @@
     protected string clientKey = "CurrentClient";
     protected bool isValid = false;
     protected bool isLoading = false;
-    protected string authErrorMessage = "";
+    protected string errorMessage = "";
 
     protected async Task HandleClientData()
     {
@@ -58,18 +58,19 @@
         if(isValid)
         {
             await authService.SendDataAsync(clientKey, Client);
-            authErrorMessage = $"Welcome {Client.login}!";
+            errorMessage = $"Welcome {Client.login}!";
             Client = new();
+            authService.SuccessAuth();
         }
         else
         {
             Client = new();
-            authErrorMessage = "Wrong login or password!";
+            errorMessage = "Wrong login or password!";
         }
     }
 
     protected void EraseMessage()
     {
-        authErrorMessage = "";
+        errorMessage = "";
     }
 }

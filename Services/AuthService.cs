@@ -1,21 +1,28 @@
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+using Microsoft.AspNetCore.Components;
 using BlazorCurseach.Data;
 using BlazorCurseach.Models;
 using BlazorCurseach.Interfaces;
+using Microsoft.JSInterop;
 
 namespace BlazorCurseach.Services;
 
 public class AuthService
 {
+    private readonly IJSRuntime _jsRuntime;
+    private readonly NavigationManager _navigationManager;
     private readonly ProtectedSessionStorage _protectedSessionStorage;
     private readonly AppDbContext _db;
 
     LinqService LinqService { get; }
 
-    public AuthService(AppDbContext db, ProtectedSessionStorage protectedSessionStorage)
+    public AuthService(AppDbContext db, ProtectedSessionStorage protectedSessionStorage, 
+                        IJSRuntime jsRuntime, NavigationManager navigationManager)
     {
         _protectedSessionStorage = protectedSessionStorage;
         _db = db;
+        _jsRuntime = jsRuntime;
+        _navigationManager = navigationManager;
 
         LinqService = new LinqService(_db);
     }
@@ -27,8 +34,13 @@ public class AuthService
 
     public async Task LoadDataAsync(string currentUser)
     {
-        var result = await _protectedSessionStorage.GetAsync<Client?>(currentUser);
-    }   
+        await _protectedSessionStorage.GetAsync<Client?>(currentUser);
+    }
+
+    public void SuccessAuth()
+    {
+        _navigationManager.NavigateTo("/", forceLoad: true);
+    }
 
     public async Task<bool> CheckValidClientAsync(List<Client> clientData)
     {
@@ -54,9 +66,9 @@ public class AuthService
     public async Task<bool> IsStorageEmptyAsync()
     {
         string key = "CurrentClient";
-        var result = await _protectedSessionStorage.GetAsync<Client>(key);
-
-        // If Success is false, there is no such item in session storage.
-        return !result.Success || result.Value == null;
+        var result = await _jsRuntime.InvokeAsync<string>(
+            "sessionStorage.getItem", key
+        );
+        return string.IsNullOrEmpty(result);
     }
 }
