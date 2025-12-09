@@ -1,9 +1,24 @@
 @page "/profile"
 @using BlazorCurseach.Models
+@using BlazorCurseach.Services
+@inject AuthService authService
 
-<h2>Welcome @Client.login!</h2>
+@if (Client != null)
+{
+    <h2>Welcome @Client.login!</h2>
+}
+else
+{
+    <h2>Loading profile...</h2>
+}
 
 @code {
-    Client Client { get; set; } = new Client();
-    protected string login => Client.login;
+    private Client? Client { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+            Client = await authService.LoadDataAsync();
+            StateHasChanged();
+    }
 }

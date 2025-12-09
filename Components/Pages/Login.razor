@@ -36,7 +36,6 @@
 @code {
     protected Client Client { get; set; } = new();
 
-    protected string clientKey = "CurrentClient";
     protected bool isValid = false;
     protected bool isLoading = false;
     protected string errorMessage = "";
@@ -57,7 +56,7 @@
 
         if(isValid)
         {
-            await authService.SendDataAsync(clientKey, Client);
+            await authService.SendDataAsync(Client);
             errorMessage = $"Welcome {Client.login}!";
             Client = new();
             authService.SuccessAuth();

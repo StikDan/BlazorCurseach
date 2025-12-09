@@ -27,14 +27,15 @@ public class AuthService
         LinqService = new LinqService(_db);
     }
 
-    public async Task SendDataAsync(string currentUser, Client Client)
+    public async Task SendDataAsync(Client Client)
     {
-        await _protectedSessionStorage.SetAsync(currentUser, Client);
+        await _protectedSessionStorage.SetAsync("CurrentClient", Client);
     }
 
-    public async Task LoadDataAsync(string currentUser)
+    public async Task<Client?> LoadDataAsync()
     {
-        await _protectedSessionStorage.GetAsync<Client?>(currentUser);
+        var result = await _protectedSessionStorage.GetAsync<Client?>("CurrentClient");
+        return result.Value;
     }
 
     public void SuccessAuth()
