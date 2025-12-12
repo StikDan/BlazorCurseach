@@ -105,6 +105,11 @@ namespace BlazorCurseach.Migrations
                         .HasColumnType("varchar(45)")
                         .HasComment("Имя клиента");
 
+                    b.Property<int>("idRole")
+                        .HasMaxLength(45)
+                        .HasColumnType("int")
+                        .HasComment("Айди роли конкретного клиента");
+
                     b.Property<string>("lastName")
                         .IsRequired()
                         .HasMaxLength(45)
@@ -130,6 +135,8 @@ namespace BlazorCurseach.Migrations
 
                     b.HasKey("idClient")
                         .HasName("PRIMARY");
+
+                    b.HasIndex("idRole");
 
                     b.HasIndex(new[] { "login" }, "login_UNIQUE")
                         .IsUnique();
@@ -271,6 +278,26 @@ namespace BlazorCurseach.Migrations
                         });
                 });
 
+            modelBuilder.Entity("BlazorCurseach.Models.UserRole", b =>
+                {
+                    b.Property<int>("idRole")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Идентификатор роли пользователя");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("idRole"));
+
+                    b.Property<string>("nameRole")
+                        .IsRequired()
+                        .HasMaxLength(45)
+                        .HasColumnType("varchar(45)")
+                        .HasComment("Название роли");
+
+                    b.HasKey("idRole");
+
+                    b.ToTable("UserRole", (string)null);
+                });
+
             modelBuilder.Entity("BlazorCurseach.Models.CharacteristicItem", b =>
                 {
                     b.HasOne("BlazorCurseach.Models.Item", "idItemNavigation")
@@ -280,6 +307,17 @@ namespace BlazorCurseach.Migrations
                         .HasConstraintName("fk_CharacteristicCategory_Item1");
 
                     b.Navigation("idItemNavigation");
+                });
+
+            modelBuilder.Entity("BlazorCurseach.Models.Client", b =>
+                {
+                    b.HasOne("BlazorCurseach.Models.UserRole", "idUserRoleNavigation")
+                        .WithMany("Clients")
+                        .HasForeignKey("idRole")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("idUserRoleNavigation");
                 });
 
             modelBuilder.Entity("BlazorCurseach.Models.Item", b =>
@@ -349,6 +387,11 @@ namespace BlazorCurseach.Migrations
             modelBuilder.Entity("BlazorCurseach.Models.StatusOrder", b =>
                 {
                     b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("BlazorCurseach.Models.UserRole", b =>
+                {
+                    b.Navigation("Clients");
                 });
 #pragma warning restore 612, 618
         }

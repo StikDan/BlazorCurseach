@@ -26,6 +26,7 @@
         if (!uri.Contains("login"))
         {
             navigationManager.NavigateTo("login", forceLoad: true);
+            await Task.CompletedTask;
         }
     }
 

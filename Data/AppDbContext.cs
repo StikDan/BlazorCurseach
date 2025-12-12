@@ -26,6 +26,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<StatusOrder> StatusOrders { get; set; }
 
+    public virtual DbSet<UserRole> UserRoles { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -94,6 +96,24 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.phone)
                 .HasMaxLength(12)
                 .HasComment("Телефон клиента");
+            entity.Property(e => e.idRole)
+                .HasMaxLength(45)
+                .HasComment("Айди роли конкретного клиента");;
+
+            entity.HasOne(d => d.idUserRoleNavigation).WithMany(p => p.Clients)
+                .HasForeignKey(d => d.idRole);
+        });
+
+        modelBuilder.Entity<UserRole>(entity =>
+        {
+            entity.HasKey(e => e.idRole);
+
+            entity.ToTable("UserRole");
+
+            entity.Property(e => e.idRole).HasComment("Идентификатор роли пользователя");
+            entity.Property(e => e.nameRole)
+                .HasMaxLength(45)
+                .HasComment("Название роли");
         });
 
         modelBuilder.Entity<Item>(entity =>

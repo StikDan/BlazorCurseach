@@ -3,25 +3,29 @@ using Microsoft.AspNetCore.Components;
 using BlazorCurseach.Data;
 using BlazorCurseach.Models;
 using BlazorCurseach.Interfaces;
-using Microsoft.JSInterop;
+//using Microsoft.JSInterop;
 
 namespace BlazorCurseach.Services;
 
 public class AuthService
 {
-    private readonly IJSRuntime _jsRuntime;
+    //private readonly IJSRuntime _jsRuntime;
     private readonly NavigationManager _navigationManager;
     private readonly ProtectedSessionStorage _protectedSessionStorage;
     private readonly AppDbContext _db;
 
     LinqService LinqService { get; }
 
-    public AuthService(AppDbContext db, ProtectedSessionStorage protectedSessionStorage, 
-                        IJSRuntime jsRuntime, NavigationManager navigationManager)
+    public AuthService(
+            //IJSRuntime jsRuntime,
+            NavigationManager navigationManager,
+            ProtectedSessionStorage protectedSessionStorage,
+            AppDbContext db
+        )
     {
         _protectedSessionStorage = protectedSessionStorage;
         _db = db;
-        _jsRuntime = jsRuntime;
+        //_jsRuntime = jsRuntime;
         _navigationManager = navigationManager;
 
         LinqService = new LinqService(_db);
@@ -48,7 +52,7 @@ public class AuthService
         List<Client> dbClients = LinqService.SelectClients();
 
         if (clientData == null || clientData.Count == 0)
-            return false;
+            return await Task.FromResult(false);
 
         Client inputClient = clientData[0];
 
@@ -60,16 +64,36 @@ public class AuthService
                 return await Task.FromResult(true);
             }
         }
-
         return await Task.FromResult(false);
     }
 
-    public async Task<bool> IsStorageEmptyAsync()
+    /*public async Task<bool> IsStorageEmptyAsync()
     {
         string key = "CurrentClient";
         var result = await _jsRuntime.InvokeAsync<string>(
             "sessionStorage.getItem", key
         );
         return string.IsNullOrEmpty(result);
+    }*/
+
+    public async Task<bool> IsStorageEmptyAsync()
+    {
+        var result = await LoadDataAsync();
+        if(result == null)
+        {
+            await Task.FromResult(true);
+            return true;
+        }
+        else
+        {
+            await Task.FromResult(false);
+            return false;
+        }
+    }
+
+    public void LogOut()
+    {
+        _protectedSessionStorage.DeleteAsync("CurrentClient");
+        _navigationManager.NavigateTo("/login", forceLoad: true);
     }
 }

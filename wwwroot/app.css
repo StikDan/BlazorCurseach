@@ -1,3 +1,13 @@
+#btn-log-out {
+    background-color: #731515;
+    border-color: #731515;
+}
+
+#btn-log-out:hover {
+    background-color: #5c1010;
+    border-color: #5c1010;
+}
+
 #login, #password {
     display: block;
 }

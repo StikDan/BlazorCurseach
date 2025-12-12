@@ -51,5 +51,12 @@ public partial class Client
     [Required(ErrorMessage = "Password Required")]
     public string password { get; set; } = null!;
 
+    /// <summary>
+    /// Айди роли конкретного клиента
+    /// </summary>
+    public int idRole { get; set; }
+
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+    public virtual UserRole idUserRoleNavigation { get; set; } = null!;
 }
