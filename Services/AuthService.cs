@@ -3,32 +3,25 @@ using Microsoft.AspNetCore.Components;
 using BlazorCurseach.Data;
 using BlazorCurseach.Models;
 using BlazorCurseach.Interfaces;
-//using Microsoft.JSInterop;
 
 namespace BlazorCurseach.Services;
 
 public class AuthService
 {
-    //private readonly IJSRuntime _jsRuntime;
     private readonly NavigationManager _navigationManager;
     private readonly ProtectedSessionStorage _protectedSessionStorage;
     private readonly AppDbContext _db;
 
-    LinqService LinqService { get; }
-
     public AuthService(
-            //IJSRuntime jsRuntime,
             NavigationManager navigationManager,
             ProtectedSessionStorage protectedSessionStorage,
             AppDbContext db
         )
     {
+        _navigationManager = navigationManager;
         _protectedSessionStorage = protectedSessionStorage;
         _db = db;
-        //_jsRuntime = jsRuntime;
-        _navigationManager = navigationManager;
-
-        LinqService = new LinqService(_db);
+        linqService = new LinqService(_db);
     }
 
     public async Task SendDataAsync(Client Client)
@@ -47,19 +40,25 @@ public class AuthService
         _navigationManager.NavigateTo("/", forceLoad: true);
     }
 
+    public void LogOut()
+    {
+        _protectedSessionStorage.DeleteAsync("CurrentClient");
+        _navigationManager.NavigateTo("/login", forceLoad: true);
+    }
+
     public async Task<bool> CheckValidClientAsync(List<Client> clientData)
     {
-        List<Client> dbClients = LinqService.SelectClients();
+        var dbClients = await linqService.SelectClients();
 
         if (clientData == null || clientData.Count == 0)
             return await Task.FromResult(false);
 
         Client inputClient = clientData[0];
 
-        for (int i = 0; i < dbClients.Count; i++)
+        foreach (Client client in dbClients)
         {
-            if (dbClients[i].login == inputClient.login 
-                && dbClients[i].password == inputClient.password)
+            if (client.login == inputClient.login 
+                && client.password == inputClient.password)
             {
                 return await Task.FromResult(true);
             }
@@ -67,14 +66,25 @@ public class AuthService
         return await Task.FromResult(false);
     }
 
-    /*public async Task<bool> IsStorageEmptyAsync()
+    public async Task<bool> isAdminRoleAsync()
     {
-        string key = "CurrentClient";
-        var result = await _jsRuntime.InvokeAsync<string>(
-            "sessionStorage.getItem", key
-        );
-        return string.IsNullOrEmpty(result);
-    }*/
+        var client = await LoadDataAsync();
+        var dbAdmins = await linqService.SelectClientAdmins();
+
+        if(client == null || dbAdmins.Count == 0)
+        {
+            return await Task.FromResult(false);
+        }
+        
+        foreach(var admin in dbAdmins)
+        {
+            if(admin.login == client.login && admin.idRole == 2)
+            {
+                return await Task.FromResult(true);
+            }
+        }
+        return await Task.FromResult(false);
+    }
 
     public async Task<bool> IsStorageEmptyAsync()
     {
@@ -89,11 +99,5 @@ public class AuthService
             await Task.FromResult(false);
             return false;
         }
-    }
-
-    public void LogOut()
-    {
-        _protectedSessionStorage.DeleteAsync("CurrentClient");
-        _navigationManager.NavigateTo("/login", forceLoad: true);
     }
 }

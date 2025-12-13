@@ -16,8 +16,16 @@ public class LinqService
         _db = db;
     }
 
-    public List<Client> SelectClients()
+    public async Task<List<Client>> SelectClients()
     {
         return _db.Clients.ToList();
+        await Task.CompletedTask;
+    }
+
+    public async Task<List<Client>> SelectClientAdmins()
+    {
+        return await _db.Clients
+            .Where(c => c.idRole == 2)
+            .ToListAsync();
     }
 }
