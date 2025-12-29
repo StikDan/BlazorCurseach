@@ -24,8 +24,10 @@ public class ClientService<Client> : ICrudService<Client>
     {
         await Task.CompletedTask;
     }
-    public async Task DeleteAsync(int id)
+
+    public async Task DeleteAsync(Client client)
     {
         await Task.CompletedTask;
+        //await linqService.DeleteClient(client);
     }
 }

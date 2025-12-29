@@ -27,4 +27,18 @@ public class LinqService
             .Where(c => c.idRole == 2)
             .ToListAsync();
     }
+
+    public async Task<Client> InsertClient(Client newClient)
+    {
+        _db.Clients.Add(newClient);
+        await _db.SaveChangesAsync();
+        return newClient;
+    }
+
+    public async Task<Client> DeleteClient(Client newClient)
+    {
+        _db.Clients.Remove(newClient);
+        await _db.SaveChangesAsync();
+        return newClient;
+    }
 }

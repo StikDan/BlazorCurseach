@@ -14,12 +14,11 @@
 
         <button class="btn btn-success" id="admin-button" type="submit" @onclick="() => clientService.CreateAsync(Client)">Create User</button>
         <button class="btn btn-success" id="admin-button" type="submit" @onclick="() => clientService.UpdateAsync(Client)" >Update User</button>
-        <button class="btn btn-success" id="admin-button" type="submit" @onclick="() => clientService.DeleteAsync(id)">Delete User</button>
+        <button class="btn btn-success" id="admin-button" type="submit" @onclick="() => clientService.DeleteAsync(Client)">Delete User</button>
     </EditForm>
 </div>
 
 @code
 {
     protected Client Client { get; set; } = new();
-    protected int id = 0;
 }

@@ -1,0 +1,51 @@
+@page "/join"
+@using System.ComponentModel.DataAnnotations
+@using BlazorCurseach.Models
+@using BlazorCurseach.Services
+@inject LinqService linqService
+@inject AuthService authService
+
+<EditForm Model="@client" OnValidSubmit="HandleClientData">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="registration-model">
+        <h2>Registration Form</h2>
+
+        <InputText @bind-Value="client.firstName" class="form-control" placeholder="Name" />
+        <ValidationMessage For="@(() => client.firstName)" />
+
+        <InputText @bind-Value="client.lastName" class="form-control" placeholder="Last Name" />
+        <ValidationMessage For="@(() => client.lastName)" />
+
+        <InputText @bind-Value="client.fatherName" class="form-control" placeholder="Father Name" />
+        <ValidationMessage For="@(() => client.fatherName)" />
+
+        <InputText @bind-Value="client.phone" class="form-control" placeholder="Phone" />
+        <ValidationMessage For="@(() => client.phone)" />
+
+        <InputText @bind-Value="client.email" class="form-control" placeholder="Email" />
+        <ValidationMessage For="@(() => client.email)" />
+
+        <InputText @bind-Value="client.login" class="form-control" placeholder="Login" />
+        <ValidationMessage For="@(() => client.login)" />
+
+        <InputText @bind-Value="client.password" type="password" class="form-control" placeholder="Password" />
+        <ValidationMessage For="@(() => client.password)" />
+
+        <button class="btn btn-primary" type="submit"> Create account </button>
+    </div>
+</EditForm>
+
+@code {
+    protected Client client { get; set; } = new();
+    protected int defaultRole = 1;
+    protected string registationMessage = "";
+
+    private async Task HandleClientData()
+    {
+        await linqService.InsertClient(client);
+        registationMessage = $"Welcome {client.login}!";
+        authService.SuccessAuth();
+    }
+}

@@ -10,16 +10,16 @@
 
     <h2 class="authorize-title">Login or Sign Up.</h2>
 
-    <EditForm Model="@Client" OnValidSubmit="HandleClientData" FormName="AuthorizeForm">
+    <EditForm Model="@client" OnValidSubmit="HandleClientData" FormName="AuthorizeForm">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
         <label for="login">Login</label>
-        <InputText id="login" @bind-Value="Client.login"></InputText><br>
+        <InputText class= "required-fields" @bind-Value="client.login"></InputText><br>
         <label for="password">Password</label>
-        <InputText id="password" type="password" @bind-Value="Client.password"></InputText>
+        <InputText class= "required-fields" type="password" @bind-Value="client.password"></InputText>
 
-        <button class="btn btn-success" id="autorize-button" type="submit" disabled="@isLoading" @onclick="() => EraseMessage()">
+        <button class="btn btn-success" type="submit" disabled="@isLoading" @onclick="() => EraseMessage()">
         @if(isLoading)
             { <span>Entering...</span> }
         else
@@ -34,7 +34,7 @@
 </div>
 
 @code {
-    protected Client Client { get; set; } = new();
+    protected Client client { get; set; } = new();
 
     protected bool isValid = false;
     protected bool isLoading = false;
@@ -44,26 +44,26 @@
     {
         isLoading = true;
 
-        string hashPassword = hashService.CalculateHashData(Client.password);
+        string hashPassword = hashService.CalculateHashData(client.password);
 
-        Client.idClient = new Random().Next(1, 10000);
-        Client.password = hashPassword;
+        client.idClient = new Random().Next(1, 10000);
+        client.password = hashPassword;
 
-        List<Client> clientData = new() { Client };
+        List<Client> clientData = new() { client };
 
         isValid = await authService.CheckValidClientAsync(clientData);
         isLoading = false;
 
         if(isValid)
         {
-            await authService.SendDataAsync(Client);
-            errorMessage = $"Welcome {Client.login}!";
-            Client = new();
+            await authService.SendDataAsync(client);
+            errorMessage = $"Welcome {client.login}!";
+            client = new();
             authService.SuccessAuth();
         }
         else
         {
-            Client = new();
+            client = new();
             errorMessage = "Wrong login or password!";
         }
     }

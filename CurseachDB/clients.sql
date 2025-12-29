@@ -10,6 +10,11 @@ CREATE TRIGGER insert_passwords_in_sha
 BEFORE INSERT ON client
 	FOR EACH ROW
 	SET NEW.password = SHA(NEW.password);
+    
+CREATE TRIGGER update_default_client_role 
+BEFORE INSERT ON client
+	FOR EACH ROW
+	SET NEW.idRole = 1;
 
 #update client
 #SET password = "111"

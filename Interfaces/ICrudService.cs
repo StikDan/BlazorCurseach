@@ -1,5 +1,3 @@
-using BlazorCurseach.Models;
-
 namespace BlazorCurseach.Interfaces;
 
     public interface ICrudService<T>
@@ -7,5 +5,5 @@ namespace BlazorCurseach.Interfaces;
         public Task CreateAsync(T parameter);
         //public Task<T?> ReadAsync(int id);
         public Task UpdateAsync(T parameter);
-        public Task DeleteAsync(int id);
+        public Task DeleteAsync(T parameter);
     }

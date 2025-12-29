@@ -42,13 +42,13 @@ public partial class Client
     /// <summary>
     /// Логин клиента
     /// </summary>
-    [Required(ErrorMessage = "Login Required")]
+    [Required]
     public string login { get; set; } = null!;
 
     /// <summary>
     /// Пароль клиента
     /// </summary>
-    [Required(ErrorMessage = "Password Required")]
+    [Required]
     public string password { get; set; } = null!;
 
     /// <summary>
