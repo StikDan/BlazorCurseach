@@ -18,8 +18,7 @@ public class LinqService
 
     public async Task<List<Client>> SelectClients()
     {
-        return _db.Clients.ToList();
-        await Task.CompletedTask;
+        return await _db.Clients.ToListAsync();
     }
 
     public async Task<List<Client>> SelectClientAdmins()

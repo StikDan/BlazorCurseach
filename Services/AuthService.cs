@@ -11,6 +11,7 @@ public class AuthService
     private readonly NavigationManager _navigationManager;
     private readonly ProtectedSessionStorage _protectedSessionStorage;
     private readonly AppDbContext _db;
+    LinqService linqService { get; }
 
     public AuthService(
             NavigationManager navigationManager,

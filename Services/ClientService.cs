@@ -7,6 +7,7 @@ namespace BlazorCurseach.Services;
 public class ClientService<Client> : ICrudService<Client>
 {
     private readonly AppDbContext _db;
+    private readonly LinqService linqService;
 
     public ClientService(AppDbContext db)
     {
@@ -18,10 +19,7 @@ public class ClientService<Client> : ICrudService<Client>
     {
         await Task.CompletedTask;
     }
-    public async Task<Client?> ReadAsync(int id)
-    {
-        await Task.CompletedTask;   
-    }
+    
     public async Task UpdateAsync(Client parameter)
     {
         await Task.CompletedTask;
