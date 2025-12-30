@@ -3,7 +3,6 @@
 @using BlazorCurseach.Services
 @inject AuthService authService
 @inject NavigationManager navigationManager
-@implements IDisposable
 
 <Router AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
@@ -19,37 +18,4 @@
 {
     protected bool isAuthorized = false;
     protected bool isSessionEmpty = false;
-
-    private async Task ToAuthRedirectAsync()
-    {
-        var uri = navigationManager.Uri;
-        if (!uri.Contains("login"))
-        {
-            navigationManager.NavigateTo("login", forceLoad: true);
-            await Task.CompletedTask;
-        }
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if(firstRender && !isAuthorized)
-        {
-            isSessionEmpty = await authService.IsStorageEmptyAsync();
-            if(isSessionEmpty)
-            {
-                await ToAuthRedirectAsync();
-                navigationManager.LocationChanged += OnLocationChanged;
-            }
-        }
-    }
-
-    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
-    {
-        ToAuthRedirectAsync();
-    }
-
-    public void Dispose()
-    {
-        navigationManager.LocationChanged -= OnLocationChanged;
-    }
 }

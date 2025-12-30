@@ -1,4 +1,4 @@
-.registration-model {
+.registration-model, .autorize-model {
     max-width: 400px;
     margin: 2% auto;
     padding: 2%;
@@ -8,15 +8,15 @@
     text-align: center;
 }
 
-.registration-model h2 {
+.registration-model, .autorize-model h2 {
     margin-bottom: 6%;
     font-weight: bold;
     color: #302e4d;
     letter-spacing: 0.4px;
 }
 
-.registration-model input,
-.registration-model .form-control {
+.registration-model input, .registration-model .form-control,
+.autorize-model input, .autorize-model .form-control {
     width: 100%;
     padding: 0.9rem 1rem;
     margin-bottom: 1rem;
@@ -27,14 +27,15 @@
     transition: border-color 0.2s;
 }
 
-.registration-model input:focus,
-.registration-model .form-control:focus {
+.registration-model input:focus, .registration-model .form-control:focus
+.autorize-model input:focus, .autorize-model .form-control {
     border-color: #6e87f5;
     outline: none;
     box-shadow: 0 0 0 2px #e0e7ff;
 }
 
-.registration-model button, .registration-model .btn-primary {
+.registration-model button, .registration-model .btn-primary
+.autorize-model button, .autorize-model .btn-primary {
     width: 100%;
     padding: 0.85rem 0;
     background: #5b6cff;
@@ -46,11 +47,13 @@
     transition: background 0.2s;
 }
 
-.registration-model button:hover, .registration-model .btn-primary:hover {
+.registration-model button:hover, .registration-model .btn-primary:hover
+.autorize-model button:hover, .autorize-model .btn-primary:hover {
     background: #4250c0;
 }
 
-.registration-model .validation-message {
+.registration-model .validation-message 
+.autorize-model .validation-message {
     color: #e33d3d;
     font-size: 0.96rem;
     margin-bottom: 0.4rem;
@@ -72,14 +75,6 @@
 #btn-log-out:hover {
     background-color: #5c1010;
     border-color: #5c1010;
-}
-
-.autorize-model .required-fields {
-    display: block;
-}
-
-.autorize-model button {
-    margin-top: 2%;
 }
 
 .alert-danger {

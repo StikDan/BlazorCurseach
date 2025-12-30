@@ -14,23 +14,24 @@
         <DataAnnotationsValidator />
         <ValidationSummary />
 
-        <label for="login">Login</label>
-        <InputText class= "required-fields" @bind-Value="client.login"></InputText><br>
-        <label for="password">Password</label>
-        <InputText class= "required-fields" type="password" @bind-Value="client.password"></InputText>
+        <InputText @bind-Value="client.login" class="form-control" placeholder="Name" />
+        <ValidationMessage For="@(() => client.login)" />
+        
+        <InputText @bind-Value="client.password" type="password" class="form-control" placeholder="Password" />
+        <ValidationMessage For="@(() => client.password)" />
 
-        <button class="btn btn-success" type="submit" disabled="@isLoading" @onclick="() => EraseMessage()">
+        <button class="btn btn-primary" type="submit" disabled="@isLoading" @onclick="() => EraseMessage()">
         @if(isLoading)
             { <span>Entering...</span> }
         else
             { <span>Login</span> }
         </button>
-    </EditForm>
 
-    @if (!string.IsNullOrEmpty(errorMessage))
-    {
-        <div class="alert alert-danger" id="auth-error">@errorMessage</div>
-    }
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger" id="auth-error">@errorMessage</div>
+        }
+    </EditForm>
 </div>
 
 @code {
