@@ -1,4 +1,8 @@
-﻿@inherits LayoutComponentBase
+@inherits LayoutComponentBase
+
+@using BlazorCurseach.Services
+@inject AuthService authService
+@inject NavigationManager navigationManager
 
 <div class="page">
     <div class="sidebar">
@@ -7,8 +11,29 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            <div class="user-icon-container" @onclick="ShowDialog" style="cursor: pointer; margin-left: auto;">
+                <img src="/images/user-icon.png" alt="user-icon" class="user-icon" />
+            </div>
         </div>
+
+        @if (showDialog)
+        {
+            <div class="modal-overlay" @onclick="CloseDialog">
+                <div class="modal-dialog">
+                    <div class="modal-header">
+                        <h3>Authentication</h3>
+                        <button class="modal-close" @onclick="CloseDialog">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please choose an option:</p>
+                        <div class="modal-buttons">
+                            <button class="btn btn-primary" @onclick="NavigateToSignUp">Sign Up</button>
+                            <button class="btn btn-primary" @onclick="NavigateToLogin">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
 
         <article class="content px-4">
             @Body
@@ -21,3 +46,29 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+public bool showDialog = false;
+
+    private async Task ShowDialog()
+    {
+        showDialog = true;
+    }
+
+    private void CloseDialog()
+    {
+        showDialog = false;
+    }
+
+    private void NavigateToSignUp()
+    {
+        navigationManager.NavigateTo("/join");
+        showDialog = false;
+    }
+
+    private void NavigateToLogin()
+    {
+        navigationManager.NavigateTo("/login");
+        showDialog = false;
+    }
+}

@@ -1,0 +1,43 @@
+@using BlazorCurseach.Services
+@inject NavigationManager navigationManager
+
+<div class="modal-overlay" @onclick="CloseDialog">
+    <div class="modal-dialog" @onclick:stopPropagation="true">
+        <div class="modal-header">
+            <h3>Authentication</h3>
+            <button class="modal-close" @onclick="CloseDialog">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Please choose an option:</p>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" @onclick="NavigateToSignUp">Sign Up</button>
+                <button class="btn btn-primary" @onclick="NavigateToLogin">Login</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+    private async Task CloseDialog()
+    {
+        if (OnClose.HasDelegate)
+        {
+            await OnClose.InvokeAsync();
+        }
+    }
+
+    private async Task NavigateToSignUp()
+    {
+        navigationManager.NavigateTo("/join");
+        await CloseDialog();
+    }
+
+    private async Task NavigateToLogin()
+    {
+        navigationManager.NavigateTo("/login");
+        await CloseDialog();
+    }
+}

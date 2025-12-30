@@ -133,3 +133,36 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
+.top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-icon-container {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    color: #1b6ec2;
+}
+
+.user-icon-container:hover {
+    background-color: rgba(27, 110, 194, 0.1);
+}
+
+.user-icon-container svg,
+.user-icon-container img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    color: #006bb7;
+}
+
+.user-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
