@@ -8,18 +8,16 @@ namespace BlazorCurseach.Services;
 
 public class AuthService
 {
-    private readonly NavigationManager _navigationManager;
     private readonly ProtectedSessionStorage _protectedSessionStorage;
     private readonly AppDbContext _db;
     LinqService linqService { get; }
+    NavigationService navigationService {get; set;}
 
     public AuthService(
-            NavigationManager navigationManager,
             ProtectedSessionStorage protectedSessionStorage,
             AppDbContext db
         )
     {
-        _navigationManager = navigationManager;
         _protectedSessionStorage = protectedSessionStorage;
         _db = db;
         linqService = new LinqService(_db);
@@ -36,15 +34,10 @@ public class AuthService
         return result.Value;
     }
 
-    public void SuccessAuth()
-    {
-        _navigationManager.NavigateTo("/", forceLoad: true);
-    }
-
     public void LogOut()
     {
         _protectedSessionStorage.DeleteAsync("CurrentClient");
-        _navigationManager.NavigateTo("/login", forceLoad: true);
+        navigationService.ToLogin();
     }
 
     public async Task<bool> CheckValidClientAsync(List<Client> clientData)

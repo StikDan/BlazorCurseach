@@ -4,6 +4,7 @@
 @using BlazorCurseach.Services
 @inject LinqService linqService
 @inject AuthService authService
+@inject NavigationService navigationService
 
 <EditForm Model="@client" OnValidSubmit="HandleClientData">
     <DataAnnotationsValidator />
@@ -46,6 +47,6 @@
     {
         await linqService.InsertClient(client);
         registationMessage = $"Welcome {client.login}!";
-        authService.SuccessAuth();
+        navigationService.SuccessAuth();
     }
 }

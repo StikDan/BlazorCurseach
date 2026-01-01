@@ -15,6 +15,7 @@ builder.Services.AddDbContextFactory<AppDbContext>(options =>
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<HashService>();
 builder.Services.AddScoped<LinqService>();
+builder.Services.AddScoped<NavigationService>();
 builder.Services.AddScoped<ClientService<Client>>();
  
 builder.Services.AddHttpClient();

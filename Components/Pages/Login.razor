@@ -5,6 +5,7 @@
 @inject ProtectedSessionStorage protectedSessionStorage
 @inject AuthService authService
 @inject HashService hashService
+@inject NavigationService navigationService
 
 <div class="autorize-model">
 
@@ -60,7 +61,7 @@
             await authService.SendDataAsync(client);
             errorMessage = $"Welcome {client.login}!";
             client = new();
-            authService.SuccessAuth();
+            navigationService.SuccessAuth();
         }
         else
         {

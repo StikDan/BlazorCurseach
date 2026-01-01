@@ -1,8 +1,7 @@
 @inherits LayoutComponentBase
-
 @using BlazorCurseach.Services
 @inject AuthService authService
-@inject NavigationManager navigationManager
+@inject NavigationService navigationService
 
 <div class="page">
     <div class="sidebar">
@@ -11,29 +10,21 @@
 
     <main>
         <div class="top-row px-4">
-            <div class="user-icon-container" @onclick="ShowDialog" style="cursor: pointer; margin-left: auto;">
-                <img src="/images/user-icon.png" alt="user-icon" class="user-icon" />
-            </div>
-        </div>
-
-        @if (showDialog)
-        {
-            <div class="modal-overlay" @onclick="CloseDialog">
-                <div class="modal-dialog">
-                    <div class="modal-header">
-                        <h3>Authentication</h3>
-                        <button class="modal-close" @onclick="CloseDialog">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please choose an option:</p>
-                        <div class="modal-buttons">
-                            <button class="btn btn-primary" @onclick="NavigateToSignUp">Sign Up</button>
-                            <button class="btn btn-primary" @onclick="NavigateToLogin">Login</button>
-                        </div>
-                    </div>
+            @if(isSessionEmpty)
+            {
+                <div class="navmenu-buttons">
+                    <button class="btn btn-primary" @onclick="navigationService.ToSignUp"> Sign Up</button>
+                    <button class="btn btn-primary" @onclick="navigationService.ToLogin"> Login</button>
                 </div>
-            </div>
-        }
+            }
+            else
+            {
+                <div class="user-icon-container" style="cursor: pointer; margin-left: auto;" 
+                    @onclick="navigationService.ToProfile">
+                    <img src="/images/user-icon.png" alt="user-icon" class="user-icon" />
+                </div>
+            }
+        </div>
 
         <article class="content px-4">
             @Body
@@ -48,27 +39,14 @@
 </div>
 
 @code {
-public bool showDialog = false;
+    protected bool isSessionEmpty = false;
 
-    private async Task ShowDialog()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        showDialog = true;
-    }
-
-    private void CloseDialog()
-    {
-        showDialog = false;
-    }
-
-    private void NavigateToSignUp()
-    {
-        navigationManager.NavigateTo("/join");
-        showDialog = false;
-    }
-
-    private void NavigateToLogin()
-    {
-        navigationManager.NavigateTo("/login");
-        showDialog = false;
+        if(firstRender)
+        {
+            isSessionEmpty = await authService.IsStorageEmptyAsync();
+        }
+        StateHasChanged();
     }
 }

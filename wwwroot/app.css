@@ -1,3 +1,28 @@
+.navmenu-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.navmenu-buttons .btn-primary {
+    flex: 1;
+    padding: 0.35rem 0.75rem;
+    background: #5b6cff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    box-shadow: 0 1px 4px rgba(91,108,255,0.10);
+    transition: background 0.2s;
+}
+
+.navmenu-buttons .btn:hover {
+    background: #4250c0;
+}
+
 .registration-model, .autorize-model {
     max-width: 400px;
     margin: 2% auto;
