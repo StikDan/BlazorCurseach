@@ -10,17 +10,20 @@ public class AuthService
 {
     private readonly ProtectedSessionStorage _protectedSessionStorage;
     private readonly AppDbContext _db;
-    LinqService linqService { get; }
-    NavigationService navigationService {get; set;}
+    private readonly LinqService linqService; //maybe get; set;
+    private readonly NavigationService navigationService; //maybe get; set;
 
     public AuthService(
             ProtectedSessionStorage protectedSessionStorage,
-            AppDbContext db
+            AppDbContext db,
+            LinqService linqService,
+            NavigationService navigationService
         )
     {
         _protectedSessionStorage = protectedSessionStorage;
         _db = db;
-        linqService = new LinqService(_db);
+        this.linqService = new LinqService(_db);
+        this.navigationService = navigationService;
     }
 
     public async Task SendDataAsync(Client Client)
@@ -34,9 +37,9 @@ public class AuthService
         return result.Value;
     }
 
-    public void LogOut()
+    public async Task LogOut()
     {
-        _protectedSessionStorage.DeleteAsync("CurrentClient");
+        await _protectedSessionStorage.DeleteAsync("CurrentClient");
         navigationService.ToLogin();
     }
 

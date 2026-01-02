@@ -41,4 +41,22 @@ public class LinqService
         await _db.SaveChangesAsync();
         return newClient;
     }
+
+    public async Task<Client> FindClient(Client newClient)
+    {
+        try
+        {
+            await _db.Clients
+                .Where(c => c.login == newClient.login && c.password == newClient.password)
+                .ToListAsync();
+
+            if(newClient == null)
+                throw new Exception("Client not found");
+            return newClient;
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
 }

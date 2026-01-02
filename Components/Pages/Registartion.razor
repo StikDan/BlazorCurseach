@@ -11,7 +11,7 @@
     <ValidationSummary />
 
     <div class="registration-model">
-        <h2>Registration Form</h2>
+        <h2>Welcome!</h2>
 
         <InputText @bind-Value="client.firstName" class="form-control" placeholder="Name" />
         <ValidationMessage For="@(() => client.firstName)" />
@@ -36,6 +36,10 @@
 
         <button class="btn btn-primary" type="submit"> Create account </button>
     </div>
+        @if (!string.IsNullOrEmpty(registationMessage))
+        {
+            <div class="alert alert-danger">@registationMessage</div>
+        }
 </EditForm>
 
 @code {
@@ -45,8 +49,9 @@
 
     private async Task HandleClientData()
     {
-        await linqService.InsertClient(client);
         registationMessage = $"Welcome {client.login}!";
+        await linqService.InsertClient(client);
+        await authService.SendDataAsync(client);
         navigationService.SuccessAuth();
     }
 }

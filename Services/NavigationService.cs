@@ -20,16 +20,16 @@ public class NavigationService {
 
     public void ToSignUp()
     {
-        _navigationManager.NavigateTo("/join");
+        _navigationManager.NavigateTo("/join", forceLoad: true);
     }
 
     public void ToLogin()
     {
-        _navigationManager.NavigateTo("/login");
+        _navigationManager.NavigateTo("/login", forceLoad: true);
     }
 
     public void ToProfile()
     {
-        _navigationManager.NavigateTo("/profile");
+        _navigationManager.NavigateTo("/profile", forceLoad: true);
     }
 }

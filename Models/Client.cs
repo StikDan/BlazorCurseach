@@ -17,16 +17,19 @@ public partial class Client
     /// <summary>
     /// Имя клиента
     /// </summary>
+    [Required]
     public string firstName { get; set; } = null!;
 
     /// <summary>
     /// Фамилия клиента
     /// </summary>
+    [Required]
     public string lastName { get; set; } = null!;
 
     /// <summary>
     /// Отчество клиента
     /// </summary>
+    [Required]
     public string fatherName { get; set; } = null!;
 
     /// <summary>
@@ -37,6 +40,7 @@ public partial class Client
     /// <summary>
     /// Электронная почта клиента
     /// </summary>
+    [Required]
     public string email { get; set; } = null!;
 
     /// <summary>

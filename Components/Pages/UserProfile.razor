@@ -26,8 +26,8 @@ else
             StateHasChanged();
     }
 
-    protected void LogOut()
+    protected async Task LogOut()
     {
-        authService.LogOut();
+        await authService.LogOut();
     }
 }

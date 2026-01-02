@@ -33,7 +33,7 @@
     text-align: center;
 }
 
-.registration-model, .autorize-model h2 {
+.registration-model h2, .autorize-model h2 {
     margin-bottom: 6%;
     font-weight: bold;
     color: #302e4d;

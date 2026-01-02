@@ -6,10 +6,11 @@
 @inject AuthService authService
 @inject HashService hashService
 @inject NavigationService navigationService
+@inject LinqService linqService
 
 <div class="autorize-model">
 
-    <h2 class="authorize-title">Login or Sign Up.</h2>
+    <h2 class="authorize-title">Login</h2>
 
     <EditForm Model="@client" OnValidSubmit="HandleClientData" FormName="AuthorizeForm">
         <DataAnnotationsValidator />
@@ -47,11 +48,9 @@
         isLoading = true;
 
         string hashPassword = hashService.CalculateHashData(client.password);
-
-        client.idClient = new Random().Next(1, 10000);
         client.password = hashPassword;
 
-        List<Client> clientData = new() { client };
+        List<Client> clientData = linqService.FindClient(client);
 
         isValid = await authService.CheckValidClientAsync(clientData);
         isLoading = false;
