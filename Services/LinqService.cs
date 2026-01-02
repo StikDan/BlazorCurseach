@@ -42,21 +42,10 @@ public class LinqService
         return newClient;
     }
 
-    public async Task<Client> FindClient(Client newClient)
+    public async Task<List<Client>> FindClient(Client newClient)
     {
-        try
-        {
-            await _db.Clients
-                .Where(c => c.login == newClient.login && c.password == newClient.password)
-                .ToListAsync();
-
-            if(newClient == null)
-                throw new Exception("Client not found");
-            return newClient;
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
+        return await _db.Clients
+            .Where(c => c.login == newClient.login && c.password == newClient.password)
+            .ToListAsync();
     }
 }

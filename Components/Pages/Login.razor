@@ -12,15 +12,15 @@
 
     <h2 class="authorize-title">Login</h2>
 
-    <EditForm Model="@client" OnValidSubmit="HandleClientData" FormName="AuthorizeForm">
+    <EditForm Model="@guest" OnValidSubmit="HandleClientData" FormName="AuthorizeForm">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
-        <InputText @bind-Value="client.login" class="form-control" placeholder="Name" />
-        <ValidationMessage For="@(() => client.login)" />
+        <InputText @bind-Value="guest.login" class="form-control" placeholder="Login" />
+        <ValidationMessage For="@(() => guest.login)" />
         
-        <InputText @bind-Value="client.password" type="password" class="form-control" placeholder="Password" />
-        <ValidationMessage For="@(() => client.password)" />
+        <InputText @bind-Value="guest.password" type="password" class="form-control" placeholder="Password" />
+        <ValidationMessage For="@(() => guest.password)" />
 
         <button class="btn btn-primary" type="submit" disabled="@isLoading" @onclick="() => EraseMessage()">
         @if(isLoading)
@@ -37,7 +37,8 @@
 </div>
 
 @code {
-    protected Client client { get; set; } = new();
+    protected Guest guest {get; set;} = new();
+    protected Client client {get; set;} = new();
 
     protected bool isValid = false;
     protected bool isLoading = false;
@@ -47,24 +48,27 @@
     {
         isLoading = true;
 
-        string hashPassword = hashService.CalculateHashData(client.password);
-        client.password = hashPassword;
+        string hashPassword = hashService.CalculateHashData(guest.password);
+        guest.password = hashPassword;
 
-        List<Client> clientData = linqService.FindClient(client);
+        Client newClient = authService.MakeClient(guest, client);
 
+        var clientData = await linqService.FindClient(newClient);
+        clientData.Add(newClient);
+        
         isValid = await authService.CheckValidClientAsync(clientData);
         isLoading = false;
 
         if(isValid)
         {
-            await authService.SendDataAsync(client);
-            errorMessage = $"Welcome {client.login}!";
-            client = new();
+            await authService.SendDataAsync(newClient);
+            errorMessage = $"Welcome {newClient.login}!";
+            newClient = new();
             navigationService.SuccessAuth();
         }
         else
         {
-            client = new();
+            newClient = new();
             errorMessage = "Wrong login or password!";
         }
     }

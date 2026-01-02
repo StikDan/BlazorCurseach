@@ -43,6 +43,13 @@ public class AuthService
         navigationService.ToLogin();
     }
 
+    public Client MakeClient(Guest guest, Client client)
+    {
+        client.login = guest.login;
+        client.password = guest.password;
+        return client;
+    }
+
     public async Task<bool> CheckValidClientAsync(List<Client> clientData)
     {
         var dbClients = await linqService.SelectClients();
