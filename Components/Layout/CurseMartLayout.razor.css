@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    background: linear-gradient(135deg, #6b0d20 0%, #5c1313 25%, #1a1a1a 50%, #121212 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.search-container {
+    position: relative;
+    width: 420px;
+    height: 64px;
+    background: #1a1a1a;
+    border-radius: 32px;
+    padding: 0 24px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        0 1px 0 rgba(220, 20, 60, 0.1) inset;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(220, 157, 20, 0.3);
+}
+
+.search-input {
+    background: none;
+    border: none;
+    color: #d1d1d1;
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
+    height: 44px;
+    padding: 0 48px 0 0;
+    outline: none;
+    letter-spacing: 0.02em;
+}
+
+.search-input::placeholder {
+    color: #8b8b8b;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.search-btn {
+    position: absolute;
+    right: 16px;
+    background: #121212;
+    border: 1px solid rgba(220, 157, 20, 0.3);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.search-btn:hover {
+    background: #dc143c;
+    border-color: #ff4500;
+    transform: scale(1.05);
+}
+
+.search-btn:active {
+    transform: scale(0.98);
+    background: #b22222;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    fill: #8b8b8b;
+    transition: fill 0.2s ease;
+}
+
+.search-btn:hover .search-icon {
+    fill: #121212;
+}
