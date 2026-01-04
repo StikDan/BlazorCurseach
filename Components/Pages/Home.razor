@@ -1,7 +1,32 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+<div class="search-container">
+    <input type="text" class="search-input" placeholder="Search some @curseWord items...">
+    <button class="search-btn" type="button">
+        <img src="/images/curse-search-icon.png" alt="search-icon" class="search-icon"/>
+    </button>
+</div>
 
-<h1>Hello, world!</h1>
+@code {
+    private string curseWord = "";
+    Random rand = new Random();
+    private List<string> entropyWords = new()
+    { 
+        "dark", "shadow", "whaith", "doom", 
+        "pumpkin", "plague", "demon", "bazaar",
+        "bloody", "curse"
+    };
 
-Welcome to your new app.
+    private string GetRandomCurseWord(List<string> entropyWords)
+    {
+        return entropyWords[rand.Next(entropyWords.Count)];
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+            curseWord = GetRandomCurseWord(entropyWords);
+            StateHasChanged();
+            await Task.CompletedTask;
+    }
+}

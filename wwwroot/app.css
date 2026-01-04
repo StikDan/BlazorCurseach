@@ -1,26 +1,74 @@
-.navmenu-buttons {
+.search-container {
+    position: relative;
+    width: 420px;
+    height: 64px;
+    background: #1a1a1a;
+    border-radius: 32px;
+    padding: 0 24px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.6),
+        0 1px 0 rgba(220, 20, 60, 0.1) inset;
     display: flex;
-    flex-direction: row;
-    gap: 0.4rem;
     align-items: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(220, 157, 20, 0.3);
 }
 
-.navmenu-buttons .btn-primary {
-    flex: 1;
-    padding: 0.35rem 0.75rem;
-    background: #5b6cff;
+.search-input {
+    background: none;
     border: none;
-    border-radius: 4px;
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    box-shadow: 0 1px 4px rgba(91,108,255,0.10);
-    transition: background 0.2s;
+    color: #d1d1d1;
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%;
+    height: 44px;
+    padding: 0 48px 0 0;
+    outline: none;
+    letter-spacing: 0.02em;
 }
 
-.navmenu-buttons .btn:hover {
-    background: #4250c0;
+.search-input::placeholder {
+    color: #8b8b8b;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.search-btn {
+    position: absolute;
+    right: 16px;
+    background: #121212;
+    border: 1px solid rgba(220, 157, 20, 0.3);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.search-btn:hover {
+    background: #b15000;
+    border-color: #b15000;
+    transform: scale(1.05);
+}
+
+.search-btn:active {
+    transform: scale(0.98);
+    background: #b15000;
+}
+
+.search-icon {
+    width: 30px;
+    height: 30px;
+    transform: rotate(-75deg);
+}
+
+.search-btn:hover .search-icon {
+    fill: #121212;
 }
 
 .registration-model, .autorize-model {
@@ -54,7 +102,7 @@
 
 .registration-model input:focus, .registration-model .form-control:focus
 .autorize-model input:focus, .autorize-model .form-control {
-    border-color: #6e87f5;
+    border-color: #b15000;
     outline: none;
     box-shadow: 0 0 0 2px #e0e7ff;
 }
@@ -63,7 +111,7 @@
 .autorize-model button, .autorize-model .btn-primary {
     width: 100%;
     padding: 0.85rem 0;
-    background: #5b6cff;
+    background: #b15000;
     border: none;
     border-radius: 8px;
     color: #fff;
@@ -74,7 +122,7 @@
 
 .registration-model button:hover, .registration-model .btn-primary:hover
 .autorize-model button:hover, .autorize-model .btn-primary:hover {
-    background: #4250c0;
+    background: #7e3901;
 }
 
 .registration-model .validation-message 
@@ -171,23 +219,49 @@ h1:focus {
     padding: 8px;
     border-radius: 50%;
     transition: background-color 0.2s;
-    color: #1b6ec2;
 }
 
 .user-icon-container:hover {
     background-color: rgba(27, 110, 194, 0.1);
 }
 
-.user-icon-container svg,
 .user-icon-container img {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     display: block;
     color: #006bb7;
 }
 
 .user-icon {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        width: 100%;
+        max-width: 340px;
+        height: 56px;
+        border-radius: 28px;
+        padding: 0 16px;
+        margin: 1rem;
+    }
+    
+    .search-input {
+        font-size: 16px;
+        padding-right: 42px;
+        height: 100%;
+    }
+    
+    .search-btn {
+        right: 12px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .search-icon {
+        width: 22px;
+        height: 22px;
+    }
 }

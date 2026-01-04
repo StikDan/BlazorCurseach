@@ -40,7 +40,7 @@ public class AuthService
     public async Task LogOut()
     {
         await _protectedSessionStorage.DeleteAsync("CurrentClient");
-        navigationService.ToLogin();
+        navigationService.SuccessAuth();
     }
 
     public Client MakeClient(Guest guest, Client client)
