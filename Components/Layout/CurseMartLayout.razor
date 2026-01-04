@@ -5,30 +5,30 @@
 
     <title>CurseMart</title>
 
-    <div class="menu">
-        <div class="top-row px-4">
-            @if(isSessionEmpty)
-            {
-                <div class="navmenu-buttons">
-                    <button class="btn btn-primary" @onclick="navigationService.ToSignUp"> Sign Up</button>
-                    <button class="btn btn-primary" @onclick="navigationService.ToLogin"> Login</button>
-                </div>
-            }
-            else
-            {
-                <div class="user-icon-container" style="cursor: pointer; margin-left: auto;" 
-                    @onclick="navigationService.ToProfile">
-                    <img src="/images/user-icon-white.png" alt="user-icon" class="user-icon" />
-                </div>
-            }
-        </div>
-
-        <main>
-            <article class="content px-4">
-                @Body
-            </article>
-        </main>
+<div class="menu">
+    <div class="top-row px-4">
+        @if(isSessionEmpty)
+        {
+            <div class="navmenu-buttons">
+                <button class="btn btn-primary" @onclick="navigationService.ToSignUp"> Sign Up</button>
+                <button class="btn btn-primary" @onclick="navigationService.ToLogin"> Login</button>
+            </div>
+        }
+        else
+        {
+            <div class="user-icon-container" style="cursor: pointer; margin-left: auto;" 
+                @onclick="navigationService.ToProfile">
+                <img src="/images/user-icon-white.png" alt="user-icon" class="user-icon" />
+            </div>
+        }
     </div>
+
+    <main>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
