@@ -3,13 +3,18 @@
 @inject AuthService authService
 @inject NavigationService navigationService
 
-    <title>CurseMart</title>
+<title>CurseMart</title>
 
 <div class="menu">
     <div class="top-row px-4">
+            <div class="home-icon-container" style="cursor: pointer; margin-right: auto;"
+                @onclick="navigationService.SuccessAuth">
+                <img src="/images/home-icon.png" alt="user-icon" class="user-icon" />
+            </div>
+
         @if(isSessionEmpty)
         {
-            <div class="navmenu-buttons">
+            <div class="cursemart-buttons">
                 <button class="btn btn-primary" @onclick="navigationService.ToSignUp"> Sign Up</button>
                 <button class="btn btn-primary" @onclick="navigationService.ToLogin"> Login</button>
             </div>
@@ -27,6 +32,11 @@
         <article class="content px-4">
             @Body
         </article>
+        <footer>
+            <button class="cart-button" @onclick="navigationService.ToCart">
+                <img src="/images/cart-idle-icon.png" alt="cart-icon" class="cart-icon" />
+            </button>
+        </footer>
     </main>
 </div>
 

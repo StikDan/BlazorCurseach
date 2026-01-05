@@ -171,25 +171,27 @@ h1:focus {
     justify-content: space-between;
 }
 
-.user-icon-container {
+.user-icon-container, .home-icon-container {
     display: flex;
     align-items: center;
     padding: 8px;
     border-radius: 50%;
     transition: background-color 0.2s;
+    cursor: pointer; 
+    margin-left: auto;
 }
 
-.user-icon-container:hover {
+.user-icon-container:hover, .home-icon-container:hover {
     background-color: rgba(27, 110, 194, 0.1);
 }
 
-.user-icon-container img {
+.user-icon-container img, .home-icon-container img {
     width: 32px;
     height: 32px;
     display: block;
 }
 
-.user-icon {
+.user-icon, .home-icon {
     width: 32px;
     height: 32px;
     object-fit: contain;
@@ -267,4 +269,12 @@ h1:focus {
 
 .search-btn:hover .search-icon {
     fill: #121212;
+}
+
+.cart-container h2, p {
+    color: #d1d1d1;
+}
+
+.cart-container a {
+    color: #b15000;
 }

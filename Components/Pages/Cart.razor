@@ -1,0 +1,28 @@
+@page "/cart"
+@using BlazorCurseach.Services
+@inject AuthService authService
+@inject NavigationService navigationService
+  
+<div class="cart-container">
+  <h2>Your Cart:</h2>
+
+    @if(isSessionEmpty)
+    {
+        <p>Please <a href="/login">Login</a> or <a href="/join">Sign up</a> to get access to CurseMart cart.</p>
+    }
+    else
+    {
+        <p>Your Items!</p>
+    }
+</div>
+
+@code {
+    protected bool isSessionEmpty = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+            isSessionEmpty = await authService.IsStorageEmptyAsync();
+            StateHasChanged();
+    }
+}

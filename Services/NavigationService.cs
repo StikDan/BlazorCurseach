@@ -32,4 +32,9 @@ public class NavigationService {
     {
         _navigationManager.NavigateTo("/profile", forceLoad: true);
     }
+
+    public void ToCart()
+    {
+        _navigationManager.NavigateTo("/cart", forceLoad: true);
+    }
 }
