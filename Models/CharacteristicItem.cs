@@ -19,9 +19,11 @@ public partial class CharacteristicItem
     public string nameCharacteristicItem { get; set; } = null!;
 
     /// <summary>
-    /// Айди товара (FK)
+    /// Айди категории (FK)
     /// </summary>
-    public int idItem { get; set; }
+    public int idCategory { get; set; }
 
-    public virtual Item idItemNavigation { get; set; } = null!;
+    public virtual Category idCategoryNavigation { get; set; } = null!;
+
+    public virtual ICollection<ValueCharacteristic> ValuesCharacteristic { get; set; } = new List<ValueCharacteristic>();
 }

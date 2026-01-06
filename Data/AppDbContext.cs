@@ -28,6 +28,8 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
+    public virtual DbSet<ValueCharacteristic> ValuesCharacteristic { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -52,18 +54,17 @@ public partial class AppDbContext : DbContext
 
             entity.ToTable("CharacteristicItem", tb => tb.HasComment("Характеристика товара"));
 
-            entity.HasIndex(e => e.idItem, "fk_CharacteristicCategory_Item1_idx");
+            entity.HasIndex(e => e.idCategory, "fk_CharacteristicItem_Category1_idx");
 
             entity.Property(e => e.idCharacteristicItem).HasComment("Идентификатор характеристики товара");
-            entity.Property(e => e.idItem).HasComment("Айди товара (FK)");
+            entity.Property(e => e.idCategory).HasComment("Айди категории (FK)");
             entity.Property(e => e.nameCharacteristicItem)
                 .HasMaxLength(60)
                 .HasComment("Название характеристики");
 
-            entity.HasOne(d => d.idItemNavigation).WithMany(p => p.CharacteristicItems)
-                .HasForeignKey(d => d.idItem)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_CharacteristicCategory_Item1");
+            entity.HasOne(d => d.idCategoryNavigation).WithMany(p => p.CharacteristicItems)
+                .HasForeignKey(d => d.idCategory)
+                .HasConstraintName("fk_CharacteristicItem_Category1_idx");
         });
 
         modelBuilder.Entity<Client>(entity =>
@@ -114,6 +115,22 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.nameRole)
                 .HasMaxLength(45)
                 .HasComment("Название роли");
+        });
+
+        modelBuilder.Entity<ValueCharacteristic>(entity =>
+        {
+            entity.HasKey(e => e.idValueCharacteristic).HasName("PRIMARY");
+
+            entity.ToTable("ValueCharacteristic", tb => tb.HasComment("Значение характеристики товара"));
+
+            entity.Property(e => e.idValueCharacteristic).HasComment("Идентификатор значения характеристики");
+            entity.Property(e => e.selfValue)
+                .HasMaxLength(45)
+                .HasComment("Само значение характеристики (Spell Power = 15%)");
+            entity.Property(e => e.idCharacteristicItem).HasComment("Айди характеристики (FK)");
+
+            entity.HasOne(d => d.idCharacteristicItemNavigation).WithMany(p => p.ValuesCharacteristic)
+                .HasForeignKey(d => d.idCharacteristicItem);
         });
 
         modelBuilder.Entity<Item>(entity =>

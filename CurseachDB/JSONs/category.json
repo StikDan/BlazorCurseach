@@ -1,0 +1,26 @@
+[
+    {
+        "idCategory": 1,
+        "nameCategory": "Potion"
+    },
+    {
+        "idCategory": 2,
+        "nameCategory": "Weapon"
+    },
+    {
+        "idCategory": 3,
+        "nameCategory": "Armor"
+    },
+    {
+        "idCategory": 4,
+        "nameCategory": "Magic"
+    },
+    {
+        "idCategory": 5,
+        "nameCategory": "Material"
+    },
+    {
+        "idCategory": 6,
+        "nameCategory": "Jewerly"
+    }
+]

@@ -1,0 +1,218 @@
+[
+    {
+        "idItem": 1,
+        "nameItem": "Heal Potion",
+        "price": 45.6,
+        "descItem": "This poiton usually will safe you from physical issues",
+        "inCart": 0,
+        "countItem": 10,
+        "idCategory": 1
+    },
+    {
+        "idItem": 2,
+        "nameItem": "Mana Poiton",
+        "price": 99.9,
+        "descItem": "Often bought by wizards. Has a salty taste",
+        "inCart": 0,
+        "countItem": 12,
+        "idCategory": 1
+    },
+    {
+        "idItem": 3,
+        "nameItem": "Fire Resistance Poiton",
+        "price": 130.2,
+        "descItem": "This potion was brewed at the top of a volcano",
+        "inCart": 0,
+        "countItem": 5,
+        "idCategory": 1
+    },
+    {
+        "idItem": 4,
+        "nameItem": "Speed Poiton",
+        "price": 50,
+        "descItem": "This potion is made for the road",
+        "inCart": 0,
+        "countItem": 8,
+        "idCategory": 1
+    },
+    {
+        "idItem": 5,
+        "nameItem": "Copper Sword",
+        "price": 500,
+        "descItem": "Suitable for training",
+        "inCart": 0,
+        "countItem": 10,
+        "idCategory": 2
+    },
+    {
+        "idItem": 6,
+        "nameItem": "Steel Sword",
+        "price": 800,
+        "descItem": "Reliable friend",
+        "inCart": 0,
+        "countItem": 30,
+        "idCategory": 2
+    },
+    {
+        "idItem": 7,
+        "nameItem": "Blazing Sword",
+        "price": 1330,
+        "descItem": "You can use it like razor, just carefully",
+        "inCart": 0,
+        "countItem": 2,
+        "idCategory": 2
+    },
+    {
+        "idItem": 8,
+        "nameItem": "Mithril Sword",
+        "price": 4200,
+        "descItem": "",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 2
+    },
+    {
+        "idItem": 9,
+        "nameItem": "Crown",
+        "price": 3000,
+        "descItem": "Not for defence. Its for style",
+        "inCart": 0,
+        "countItem": 3,
+        "idCategory": 3
+    },
+    {
+        "idItem": 10,
+        "nameItem": "Iron Chestplate",
+        "price": 900,
+        "descItem": "Across many heavy fights...",
+        "inCart": 0,
+        "countItem": 90,
+        "idCategory": 3
+    },
+    {
+        "idItem": 11,
+        "nameItem": "Ice Wizard Leggings",
+        "price": 1290.8,
+        "descItem": "Still frozen",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 3
+    },
+    {
+        "idItem": 12,
+        "nameItem": "Boots With Feathers",
+        "price": 500.9,
+        "descItem": "Nice to combo with Speed Potion",
+        "inCart": 0,
+        "countItem": 4,
+        "idCategory": 3
+    },
+    {
+        "idItem": 13,
+        "nameItem": "Arcane Staff",
+        "price": "1500",
+        "descItem": "Staff infused with ancient arcane magic.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 4
+    },
+    {
+        "idItem": 14,
+        "nameItem": "Shadow Dagger",
+        "price": "4500",
+        "descItem": "Dagger forged in the depths of shadow.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 4
+    },
+    {
+        "idItem": 15,
+        "nameItem": "Fireball Amulet",
+        "price": "3500",
+        "descItem": "Amulet that channels destructive fire magic.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 4
+    },
+    {
+        "idItem": 16,
+        "nameItem": "Healing Ring",
+        "price": "2200",
+        "descItem": "Ring imbued with restorative enchantments.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 4
+    },
+    {
+        "idItem": 17,
+        "nameItem": "Dragon Scale",
+        "price": "800",
+        "descItem": "Rare scale from ancient dragon hide.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 5
+    },
+    {
+        "idItem": 18,
+        "nameItem": "Mithril Ore",
+        "price": "1200",
+        "descItem": "Lightweight metal forged by dwarves.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 5
+    },
+    {
+        "idItem": 19,
+        "nameItem": "Arcane Crystal",
+        "price": "950",
+        "descItem": "Crystal pulsing with raw magic.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 5
+    },
+    {
+        "idItem": 20,
+        "nameItem": "Phoenix Feather",
+        "price": "1400",
+        "descItem": "Feather from the firebird rebirth.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 5
+    },
+    {
+        "idItem": 21,
+        "nameItem": "Elven Tiara",
+        "price": "1800",
+        "descItem": "Elegant crown of ancient elven silver.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 6
+    },
+    {
+        "idItem": 22,
+        "nameItem": "Ruby Necklace",
+        "price": "2500",
+        "descItem": "Necklace with fire-infused ruby pendant.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 6
+    },
+    {
+        "idItem": 23,
+        "nameItem": "Sapphire Earrings",
+        "price": "2100",
+        "descItem": "Earrings channeling mystical sapphire power.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 6
+    },
+    {
+        "idItem": 24,
+        "nameItem": "Gold Rune Bracelet",
+        "price": "3200",
+        "descItem": "Bracelet etched with protective runes.",
+        "inCart": 0,
+        "countItem": 1,
+        "idCategory": 6
+    }
+]

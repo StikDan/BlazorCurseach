@@ -19,4 +19,6 @@ public partial class Category
     public string nameCategory { get; set; } = null!;
 
     public virtual ICollection<Item> Items { get; set; } = new List<Item>();
+    
+    public virtual ICollection<CharacteristicItem> CharacteristicItems { get; set; } = new List<CharacteristicItem>();
 }

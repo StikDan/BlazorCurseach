@@ -3,6 +3,7 @@
 @using BlazorCurseach.Services
 @inject AuthService authService
 
+<div class="profile-contanier">
 @if (Client != null)
 {
     <h2>Welcome @Client.login!</h2>
@@ -15,6 +16,7 @@ else
 {
     <h2>Loading profile...</h2>
 }
+</div>
 
 @code {
     private Client? Client { get; set; }

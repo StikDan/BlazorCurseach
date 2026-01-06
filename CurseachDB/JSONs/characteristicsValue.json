@@ -1,0 +1,427 @@
+[
+    {
+        "idValueCharacteristic": 1,
+        "selfValue": "Common",
+        "idCharacteristicItem": 1
+    },
+    {
+        "idValueCharacteristic": 2,
+        "selfValue": "Rare",
+        "idCharacteristicItem": 1
+    },
+    {
+        "idValueCharacteristic": 3,
+        "selfValue": "Legendary",
+        "idCharacteristicItem": 1
+    },
+    {
+        "idValueCharacteristic": 4,
+        "selfValue": "15 sec",
+        "idCharacteristicItem": 2
+    },
+    {
+        "idValueCharacteristic": 5,
+        "selfValue": "30 sec",
+        "idCharacteristicItem": 2
+    },
+    {
+        "idValueCharacteristic": 6,
+        "selfValue": "60 sec",
+        "idCharacteristicItem": 2
+    },
+    {
+        "idValueCharacteristic": 10,
+        "selfValue": "Positive",
+        "idCharacteristicItem": 4
+    },
+    {
+        "idValueCharacteristic": 11,
+        "selfValue": "Magic",
+        "idCharacteristicItem": 4
+    },
+    {
+        "idValueCharacteristic": 12,
+        "selfValue": "Negative",
+        "idCharacteristicItem": 4
+    },
+
+    {
+        "idValueCharacteristic": 13,
+        "selfValue": "50",
+        "idCharacteristicItem": 5
+    },
+    {
+        "idValueCharacteristic": 14,
+        "selfValue": "100",
+        "idCharacteristicItem": 5
+    },
+    {
+        "idValueCharacteristic": 15,
+        "selfValue": "150",
+        "idCharacteristicItem": 5
+    },
+    {
+        "idValueCharacteristic": 16,
+        "selfValue": "Physical",
+        "idCharacteristicItem": 6
+    },
+    {
+        "idValueCharacteristic": 17,
+        "selfValue": "Fire",
+        "idCharacteristicItem": 6
+    },
+    {
+        "idValueCharacteristic": 18,
+        "selfValue": "Absolute",
+        "idCharacteristicItem": 6
+    },
+    {
+        "idValueCharacteristic": 19,
+        "selfValue": "1.0",
+        "idCharacteristicItem": 7
+    },
+    {
+        "idValueCharacteristic": 20,
+        "selfValue": "1.5",
+        "idCharacteristicItem": 7
+    },
+    {
+        "idValueCharacteristic": 21,
+        "selfValue": "2.0",
+        "idCharacteristicItem": 7
+    },
+    {
+        "idValueCharacteristic": 22,
+        "selfValue": "100",
+        "idCharacteristicItem": 8
+    },
+    {
+        "idValueCharacteristic": 23,
+        "selfValue": "200",
+        "idCharacteristicItem": 8
+    },
+    {
+        "idValueCharacteristic": 24,
+        "selfValue": "300",
+        "idCharacteristicItem": 8
+    },
+    
+    {
+        "idValueCharacteristic": 25,
+        "selfValue": "20",
+        "idCharacteristicItem": 9
+    },
+    {
+        "idValueCharacteristic": 26,
+        "selfValue": "40",
+        "idCharacteristicItem": 9
+    },
+    {
+        "idValueCharacteristic": 27,
+        "selfValue": "60",
+        "idCharacteristicItem": 9
+    },
+    {
+        "idValueCharacteristic": 28,
+        "selfValue": "Light",
+        "idCharacteristicItem": 10
+    },
+    {
+        "idValueCharacteristic": 29,
+        "selfValue": "Medium",
+        "idCharacteristicItem": 10
+    },
+    {
+        "idValueCharacteristic": 30,
+        "selfValue": "Heavy",
+        "idCharacteristicItem": 10
+    },
+    {
+        "idValueCharacteristic": 31,
+        "selfValue": "100",
+        "idCharacteristicItem": 11
+    },
+    {
+        "idValueCharacteristic": 32,
+        "selfValue": "200",
+        "idCharacteristicItem": 11
+    },
+    {
+        "idValueCharacteristic": 33,
+        "selfValue": "300",
+        "idCharacteristicItem": 11
+    },
+    {
+        "idValueCharacteristic": 34,
+        "selfValue": "10 ed",
+        "idCharacteristicItem": 12
+    },
+    {
+        "idValueCharacteristic": 35,
+        "selfValue": "15 ed",
+        "idCharacteristicItem": 12
+    },
+    {
+        "idValueCharacteristic": 36,
+        "selfValue": "20 ed",
+        "idCharacteristicItem": 12
+    },
+    {
+        "idValueCharacteristic": 37,
+        "selfValue": "10%",
+        "idCharacteristicItem": 13
+    },
+    {
+        "idValueCharacteristic": 38,
+        "selfValue": "20%",
+        "idCharacteristicItem": 13
+    },
+    {
+        "idValueCharacteristic": 39,
+        "selfValue": "30%",
+        "idCharacteristicItem": 13
+    },
+    {
+        "idValueCharacteristic": 40,
+        "selfValue": "15%",
+        "idCharacteristicItem": 14
+    },
+    {
+        "idValueCharacteristic": 41,
+        "selfValue": "25%",
+        "idCharacteristicItem": 14
+    },
+    {
+        "idValueCharacteristic": 42,
+        "selfValue": "35%",
+        "idCharacteristicItem": 14
+    },
+
+    {
+        "idValueCharacteristic": 43,
+        "selfValue": "20",
+        "idCharacteristicItem": 15
+    },
+    {
+        "idValueCharacteristic": 44,
+        "selfValue": "50",
+        "idCharacteristicItem": 15
+    },
+    {
+        "idValueCharacteristic": 45,
+        "selfValue": "80",
+        "idCharacteristicItem": 15
+    },
+    {
+        "idValueCharacteristic": 46,
+        "selfValue": "100",
+        "idCharacteristicItem": 16
+    },
+    {
+        "idValueCharacteristic": 47,
+        "selfValue": "150",
+        "idCharacteristicItem": 16
+    },
+    {
+        "idValueCharacteristic": 48,
+        "selfValue": "200",
+        "idCharacteristicItem": 16
+    },
+    {
+        "idValueCharacteristic": 49,
+        "selfValue": "1 sec",
+        "idCharacteristicItem": 17
+    },
+    {
+        "idValueCharacteristic": 50,
+        "selfValue": "2 sec",
+        "idCharacteristicItem": 17
+    },
+    {
+        "idValueCharacteristic": 51,
+        "selfValue": "3 sec",
+        "idCharacteristicItem": 17
+    },
+    {
+        "idValueCharacteristic": 52,
+        "selfValue": "5 sec",
+        "idCharacteristicItem": 18
+    },
+    {
+        "idValueCharacteristic": 53,
+        "selfValue": "10 sec",
+        "idCharacteristicItem": 18
+    },
+    {
+        "idValueCharacteristic": 54,
+        "selfValue": "15 sec",
+        "idCharacteristicItem": 18
+    },
+    
+    {
+        "idValueCharacteristic": 55,
+        "selfValue": "Nature",
+        "idCharacteristicItem": 21
+    },
+    {
+        "idValueCharacteristic": 56,
+        "selfValue": "Magic",
+        "idCharacteristicItem": 21
+    },
+    {
+        "idValueCharacteristic": 57,
+        "selfValue": "Metall",
+        "idCharacteristicItem": 21
+    },
+    {
+        "idValueCharacteristic": 58,
+        "selfValue": "1 ed",
+        "idCharacteristicItem": 23
+    },
+    {
+        "idValueCharacteristic": 59,
+        "selfValue": "2 ed",
+        "idCharacteristicItem": 23
+    },
+    {
+        "idValueCharacteristic": 60,
+        "selfValue": "3 ed",
+        "idCharacteristicItem": 23
+    },
+    {
+        "idValueCharacteristic": 61,
+        "selfValue": "Low",
+        "idCharacteristicItem": 24
+    },
+    {
+        "idValueCharacteristic": 62,
+        "selfValue": "Medium",
+        "idCharacteristicItem": 24
+    },
+    {
+        "idValueCharacteristic": 63,
+        "selfValue": "High",
+        "idCharacteristicItem": 24
+    },
+    {
+        "idValueCharacteristic": 64,
+        "selfValue": "+5%",
+        "idCharacteristicItem": 25
+    },
+    {
+        "idValueCharacteristic": 65,
+        "selfValue": "+10%",
+        "idCharacteristicItem": 25
+    },
+    {
+        "idValueCharacteristic": 66,
+        "selfValue": "+15%",
+        "idCharacteristicItem": 25
+    },
+    {
+        "idValueCharacteristic": 67,
+        "selfValue": "+3%",
+        "idCharacteristicItem": 26
+    },
+    {
+        "idValueCharacteristic": 68,
+        "selfValue": "+6%",
+        "idCharacteristicItem": 26
+    },
+    {
+        "idValueCharacteristic": 69,
+        "selfValue": "+9%",
+        "idCharacteristicItem": 26
+    },
+    {
+        "idValueCharacteristic": 70,
+        "selfValue": "No",
+        "idCharacteristicItem": 27
+    },
+    {
+        "idValueCharacteristic": 71,
+        "selfValue": "Good",
+        "idCharacteristicItem": 27
+    },
+    {
+        "idValueCharacteristic": 72,
+        "selfValue": "Excellent",
+        "idCharacteristicItem": 27
+    },
+
+    {
+        "idValueCharacteristic": 73,
+        "selfValue": "Life Steal",
+        "idCharacteristicItem": 28
+    },
+    {
+        "idValueCharacteristic": 74,
+        "selfValue": "Vampirism",
+        "idCharacteristicItem": 28
+    },
+    {
+        "idValueCharacteristic": 75,
+        "selfValue": "Regeneration",
+        "idCharacteristicItem": 28
+    },
+    {
+        "idValueCharacteristic": 76,
+        "selfValue": "+20",
+        "idCharacteristicItem": 29
+    },
+    {
+        "idValueCharacteristic": 77,
+        "selfValue": "+40",
+        "idCharacteristicItem": 29
+    },
+    {
+        "idValueCharacteristic": 78,
+        "selfValue": "+60",
+        "idCharacteristicItem": 29
+    },
+    {
+        "idValueCharacteristic": 79,
+        "selfValue": "+15",
+        "idCharacteristicItem": 30
+    },
+    {
+        "idValueCharacteristic": 80,
+        "selfValue": "+30",
+        "idCharacteristicItem": 30
+    },
+    {
+        "idValueCharacteristic": 81,
+        "selfValue": "+45",
+        "idCharacteristicItem": 30
+    },
+    {
+        "idValueCharacteristic": 82,
+        "selfValue": "5%",
+        "idCharacteristicItem": 31
+    },
+    {
+        "idValueCharacteristic": 83,
+        "selfValue": "10%",
+        "idCharacteristicItem": 31
+    },
+    {
+        "idValueCharacteristic": 84,
+        "selfValue": "15%",
+        "idCharacteristicItem": 31
+    },
+    {
+        "idValueCharacteristic": 85,
+        "selfValue": "10%",
+        "idCharacteristicItem": 32
+    },
+    {
+        "idValueCharacteristic": 86,
+        "selfValue": "20%",
+        "idCharacteristicItem": 32
+    },
+    {
+        "idValueCharacteristic": 87,
+        "selfValue": "30%",
+        "idCharacteristicItem": 32
+    }
+]

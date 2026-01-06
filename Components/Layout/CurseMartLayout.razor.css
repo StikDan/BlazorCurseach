@@ -10,6 +10,10 @@ main {
     min-height: 100vh;
 }
 
+.top-row {
+    margin-bottom: 2%;
+}
+
 .menu {
     position: relative;
     width: 100%;
@@ -56,7 +60,8 @@ footer {
     left: 0;
     right: 0;
     height: 60px;
-    background-color: #111;
+    background-color: #121212;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;

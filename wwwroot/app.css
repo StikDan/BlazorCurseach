@@ -271,7 +271,8 @@ h1:focus {
     fill: #121212;
 }
 
-.cart-container h2, p {
+.cart-container h2, p,
+.profile-contanier h2, p {
     color: #d1d1d1;
 }
 

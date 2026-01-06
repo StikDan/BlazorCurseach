@@ -1,0 +1,148 @@
+[
+    {
+        "idCharacteristicItem": 1,
+        "nameCharacteristicItem": "Rarity",
+        "idCategory": 1
+    },
+    {
+        "idCharacteristicItem": 2,
+        "nameCharacteristicItem": "Duration",
+        "idCategory": 1
+    },
+    {
+        "idCharacteristicItem": 4,
+        "nameCharacteristicItem": "Potion Type",
+        "idCategory": 1
+    },
+
+    {
+        "idCharacteristicItem": 5,
+        "nameCharacteristicItem": "Damage",
+        "idCategory": 2
+    },
+    {
+        "idCharacteristicItem": 6,
+        "nameCharacteristicItem": "Damage Type",
+        "idCategory": 2
+    },
+    {
+        "idCharacteristicItem": 7,
+        "nameCharacteristicItem": "Attack Speed",
+        "idCategory": 2
+    },
+    {
+        "idCharacteristicItem": 8,
+        "nameCharacteristicItem": "Weapon Durability",
+        "idCategory": 2
+    },
+    
+    {
+        "idCharacteristicItem": 9,
+        "nameCharacteristicItem": "Armor",
+        "idCategory": 3
+    },
+    {
+        "idCharacteristicItem": 10,
+        "nameCharacteristicItem": "Armor Type",
+        "idCategory": 3
+    },
+    {
+        "idCharacteristicItem": 11,
+        "nameCharacteristicItem": "Armor Durability",
+        "idCategory": 3
+    },
+    {
+        "idCharacteristicItem": 12,
+        "nameCharacteristicItem": "Weight",
+        "idCategory": 3
+    },
+    {
+        "idCharacteristicItem": 13,
+        "nameCharacteristicItem": "Magic Resistance",
+        "idCategory": 3
+    },
+    {
+        "idCharacteristicItem": 14,
+        "nameCharacteristicItem": "Physical Resistance",
+        "idCategory": 3
+    },
+
+    {
+        "idCharacteristicItem": 15,
+        "nameCharacteristicItem": "Mana Cost",
+        "idCategory": 4
+    },
+    {
+        "idCharacteristicItem": 16,
+        "nameCharacteristicItem": "Spell Power",
+        "idCategory": 4
+    },
+    {
+        "idCharacteristicItem": 17,
+        "nameCharacteristicItem": "Cast Time",
+        "idCategory": 4
+    },
+    {
+        "idCharacteristicItem": 18,
+        "nameCharacteristicItem": "Cooldown",
+        "idCategory": 4
+    }, 
+    
+    {
+        "idCharacteristicItem": 21,
+        "nameCharacteristicItem": "Material Type",
+        "idCategory": 5
+    },
+    {
+        "idCharacteristicItem": 23,
+        "nameCharacteristicItem": "Weight",
+        "idCategory": 5
+    },
+    {
+        "idCharacteristicItem": 24,
+        "nameCharacteristicItem": "Density",
+        "idCategory": 5
+    },
+    {
+        "idCharacteristicItem": 25,
+        "nameCharacteristicItem": "Damage Modifier",
+        "idCategory": 5
+    },
+    {
+        "idCharacteristicItem": 26,
+        "nameCharacteristicItem": "Armor Modifier",
+        "idCategory": 5
+    },
+    {
+        "idCharacteristicItem": 27,
+        "nameCharacteristicItem": "Magic Conductivity",
+        "idCategory": 5
+    },
+
+
+    {
+        "idCharacteristicItem": 28,
+        "nameCharacteristicItem": "Unique Effect",
+        "idCategory": 6
+    },
+    {
+        "idCharacteristicItem": 29,
+        "nameCharacteristicItem": "Magic Damage Bonus",
+        "idCategory": 6
+    },
+    {
+        "idCharacteristicItem": 30,
+        "nameCharacteristicItem": "Physical Damage Bonus",
+        "idCategory": 6
+    },
+    {
+        "idCharacteristicItem": 31,
+        "nameCharacteristicItem": "Critical Strike Chance",
+        "idCategory": 6
+    },
+    {
+        "idCharacteristicItem": 32,
+        "nameCharacteristicItem": "Haste Casting",
+        "idCategory": 6
+    }
+]

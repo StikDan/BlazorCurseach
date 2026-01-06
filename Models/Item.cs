@@ -43,7 +43,5 @@ public partial class Item
     /// </summary>
     public int idCategory { get; set; }
 
-    public virtual ICollection<CharacteristicItem> CharacteristicItems { get; set; } = new List<CharacteristicItem>();
-
     public virtual Category idCategoryNavigation { get; set; } = null!;
 }
