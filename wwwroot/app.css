@@ -1,11 +1,3 @@
-.item-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 20rem);
-    grid-gap: 2rem;
-    justify-content: center;
-    padding-left: 0;
-}
-
 .registration-model, .autorize-model {
     max-width: 400px;
     margin: 2% auto;
@@ -278,4 +270,64 @@ h1:focus {
 
 .cart-container a {
     color: #b15000;
+}
+
+.item-cards {
+    list-style: none;
+    margin: 40px auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+}
+
+.item-cards li {
+    position: relative;
+    height: 260px;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.item-cards li::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.1));
+}
+
+.item-cards li:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.35);
+}
+
+.item-info {
+    position: absolute;
+    inset-inline: 16px;
+    bottom: 16px;
+    z-index: 1;
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.item-info .title {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.item-info .price {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.55);
+    font-weight: 600;
+    font-size: 0.95rem;
 }

@@ -1,13 +1,34 @@
 ﻿@page "/"
+@using BlazorCurseach.Services
+@using BlazorCurseach.Models
+@inject HttpClient httpClient
+@inject NavigationManager navigationManager
 
-<div class="search-container">
-    <input type="text" class="search-input" placeholder="Search some @curseWord items...">
-    <button class="search-btn" type="button">
-        <img src="/images/curse-search-icon.png" alt="search-icon" class="search-icon"/>
-    </button>
-</div>
+<main>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search some @curseWord items...">
+        <button class="search-btn" type="button">
+            <img src="/images/curse-search-icon.png" alt="search-icon" class="search-icon"/>
+        </button>
+    </div>
+
+    <ul class="item-cards">
+        @foreach(var item in items ?? new())
+        {
+            <li style="background-image: url('@item.imageLink')">
+                <div class="item-info">
+                    <span class="title">@item.nameItem</span>
+                    @item.descItem
+                    <span class="price">@item.price</span>
+                </div>
+            </li>
+        }
+    </ul>
+</main>
 
 @code {
+    List<Item> items = new();
+
     private string curseWord = "";
     Random rand = new Random();
     private List<string> entropyWords = new()
@@ -20,6 +41,11 @@
     private string GetRandomCurseWord(List<string> entropyWords)
     {
         return entropyWords[rand.Next(entropyWords.Count)];
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await httpClient.GetFromJsonAsync<List<Item>>(navigationManager.BaseUri + "items");
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

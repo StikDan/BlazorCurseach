@@ -39,6 +39,11 @@ public partial class Item
     public int countItem { get; set; }
 
     /// <summary>
+    /// Ссылка на изображение товара в приложении
+    /// </summary>
+    public string? imageLink { get; set; }
+
+    /// <summary>
     /// Идентификатор категории товара (FK)
     /// </summary>
     public int idCategory { get; set; }

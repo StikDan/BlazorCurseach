@@ -17,7 +17,8 @@ builder.Services.AddScoped<HashService>();
 builder.Services.AddScoped<LinqService>();
 builder.Services.AddScoped<NavigationService>();
 builder.Services.AddScoped<ClientService<Client>>();
- 
+
+builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 
 builder.Services.AddRazorComponents()
@@ -34,7 +35,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.MapControllers();
 app.UseStaticFiles();
 app.UseAntiforgery();
 

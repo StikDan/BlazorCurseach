@@ -152,6 +152,9 @@ public partial class AppDbContext : DbContext
                 .HasMaxLength(70)
                 .HasComment("Название товара");
             entity.Property(e => e.price).HasComment("Цена товара");
+            entity.Property(e => e.imageLink)
+                .HasMaxLength(100)
+                .HasComment("Ссылка на изображение товара в приложении");
 
             entity.HasOne(d => d.idCategoryNavigation).WithMany(p => p.Items)
                 .HasForeignKey(d => d.idCategory)
