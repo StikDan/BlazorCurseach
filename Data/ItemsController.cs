@@ -18,6 +18,6 @@ public class ItemsController : Controller
     [HttpGet]
     public async Task<ActionResult<List<Item>>> GetItems()
     {
-        return (await _db.Items.ToListAsync()).OrderByDescending(s => s.price).ToList();
+        return await _db.Items.ToListAsync();
     }
 }

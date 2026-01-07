@@ -1,14 +1,17 @@
 ﻿@page "/"
 @using BlazorCurseach.Services
 @using BlazorCurseach.Models
+@using FuzzySharp
 @inject NavigationService navigationService
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
+@inject LinqService linqService
 
 <main>
     <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search some @curseWord items...">
-        <button class="search-btn" type="button">
+        <input type="text" @bind="query" @onkeyup="OnSearchInput" 
+            class="search-input" placeholder="Search some @curseWord items...">
+        <button class="search-btn" type="button"  @onclick="SearchProcessAsync">
             <img src="/images/curse-search-icon.png" alt="search-icon" class="search-icon"/>
         </button>
     </div>
@@ -35,10 +38,11 @@
 </main>
 
 @code {
-    List<Item>? items = new();
+    protected List<Item>? items = new();
+    protected string query = "";
 
     private string curseWord = "";
-    Random rand = new Random();
+    protected Random rand = new Random();
     private List<string> entropyWords = new()
     { 
         "dark", "shadow", "whaith", "doom", 
@@ -62,5 +66,31 @@
             curseWord = GetRandomCurseWord(entropyWords);
             StateHasChanged();
             await Task.CompletedTask;
+    }
+
+    private async Task OnSearchInput(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SearchProcessAsync();
+        }
+    }
+
+    protected async Task SearchProcessAsync()
+    {
+        var allItems = await linqService.SelectItems();
+        
+        if (string.IsNullOrWhiteSpace(query))
+        {
+            items = allItems;
+        }
+        else
+        {
+            items = allItems
+                .Where(item => Fuzz.PartialRatio(item.nameItem ?? "", query) > 50)
+                .ToList();
+        }
+        
+        StateHasChanged();
     }
 }

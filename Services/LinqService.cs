@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using FuzzySharp;
 using BlazorCurseach.Models;
 using BlazorCurseach.Data;
 
@@ -47,5 +48,10 @@ public class LinqService
         return await _db.Clients
             .Where(c => c.login == newClient.login && c.password == newClient.password)
             .ToListAsync();
+    }
+
+    public async Task<List<Item>> SelectItems()
+    {
+        return await _db.Items.ToListAsync();
     }
 }
