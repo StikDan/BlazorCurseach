@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using BlazorCurseach.Services
 @using BlazorCurseach.Models
+@inject NavigationService navigationService
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
 
@@ -15,19 +16,26 @@
     <ul class="item-cards">
         @foreach(var item in items ?? new())
         {
-            <li style="background-image: url('@item.imageLink')">
+            <li class="item-card">
+                <div class="item-image" style="background-image: url('@item.imageLink')"></div>
                 <div class="item-info">
                     <span class="title">@item.nameItem</span>
-                    @item.descItem
+                    @item.descItem<br>
                     <span class="price">@item.price</span>
                 </div>
             </li>
         }
     </ul>
+
+    <footer>
+        <button class="cart-button" @onclick="navigationService.ToCart">
+            <img src="/images/cart-idle-icon.png" alt="cart-icon" class="cart-icon" />
+        </button>
+    </footer>
 </main>
 
 @code {
-    List<Item> items = new();
+    List<Item>? items = new();
 
     private string curseWord = "";
     Random rand = new Random();

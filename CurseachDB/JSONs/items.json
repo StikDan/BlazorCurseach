@@ -3,81 +3,90 @@
         "idItem": 1,
         "nameItem": "Heal Potion",
         "price": 45.6,
-        "descItem": "This poiton usually will safe you from physical issues",
+        "descItem": "This poiton usually will safe you from physical issues.",
         "inCart": 0,
         "countItem": 10,
+        "imageLink": "/images/items/healing-potion.png",
         "idCategory": 1
     },
     {
         "idItem": 2,
         "nameItem": "Mana Poiton",
         "price": 99.9,
-        "descItem": "Often bought by wizards. Has a salty taste",
+        "descItem": "Often bought by wizards. Has a salty taste.",
         "inCart": 0,
         "countItem": 12,
+        "imageLink": "/images/items/mana-potion.png",
         "idCategory": 1
     },
     {
         "idItem": 3,
         "nameItem": "Fire Resistance Poiton",
         "price": 130.2,
-        "descItem": "This potion was brewed at the top of a volcano",
+        "descItem": "This potion was brewed at the top of a volcano.",
         "inCart": 0,
         "countItem": 5,
+        "imageLink": "/images/items/fire-resistance-potion.png",
         "idCategory": 1
     },
     {
         "idItem": 4,
         "nameItem": "Speed Poiton",
         "price": 50,
-        "descItem": "This potion is made for the road",
+        "descItem": "This potion is made for the road.",
         "inCart": 0,
         "countItem": 8,
+        "imageLink": "/images/items/speed-potion.png",
         "idCategory": 1
     },
     {
         "idItem": 5,
         "nameItem": "Copper Sword",
         "price": 500,
-        "descItem": "Suitable for training",
+        "descItem": "Suitable for training.",
         "inCart": 0,
         "countItem": 10,
+        "imageLink": "/images/items/copper-sword.png",
         "idCategory": 2
     },
     {
         "idItem": 6,
         "nameItem": "Steel Sword",
         "price": 800,
-        "descItem": "Reliable friend",
+        "descItem": "Reliable friend.",
         "inCart": 0,
         "countItem": 30,
+        "imageLink": "/images/items/steel-sword.png",
         "idCategory": 2
     },
     {
         "idItem": 7,
         "nameItem": "Blazing Sword",
         "price": 1330,
-        "descItem": "You can use it like razor, just carefully",
+        "descItem": "You can use it like razor, just carefully.",
         "inCart": 0,
         "countItem": 2,
+        "imageLink": "/images/items/blazing-sword.png",
         "idCategory": 2
     },
     {
         "idItem": 8,
         "nameItem": "Mithril Sword",
         "price": 4200,
-        "descItem": "The strongest blade in the world",
+        "descItem": "The strongest blade in the world.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/mithril-sword.png",
         "idCategory": 2
     },
     {
         "idItem": 9,
         "nameItem": "Crown",
         "price": 3000,
-        "descItem": "Not for defence. Its for style",
+        "descItem": "Not for defence. Its for style.",
         "inCart": 0,
         "countItem": 3,
+        "imageLink": "/images/items/crown.png",
         "idCategory": 3
     },
     {
@@ -87,6 +96,7 @@
         "descItem": "Across many heavy fights...",
         "inCart": 0,
         "countItem": 90,
+        "imageLink": "/images/items/chestplate.png",
         "idCategory": 3
     },
     {
@@ -96,15 +106,17 @@
         "descItem": "Still frozen",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/leggings.png",
         "idCategory": 3
     },
     {
         "idItem": 12,
         "nameItem": "Boots With Feathers",
         "price": 500.9,
-        "descItem": "Nice to combo with Speed Potion",
+        "descItem": "Nice to combo with Speed Potion.",
         "inCart": 0,
         "countItem": 4,
+        "imageLink": "/images/items/feather-boots.png",
         "idCategory": 3
     },
     {
@@ -114,6 +126,7 @@
         "descItem": "Staff infused with ancient arcane magic.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/staff.png",
         "idCategory": 4
     },
     {
@@ -123,15 +136,17 @@
         "descItem": "Dagger forged in the depths of shadow.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/shadow-dagger.png",
         "idCategory": 4
     },
     {
         "idItem": 15,
-        "nameItem": "Fireball Amulet",
+        "nameItem": "Bottle With Unknown Liquid",
         "price": "3500",
-        "descItem": "Amulet that channels destructive fire magic.",
+        "descItem": "Who knows what is inside?",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/bottle-unknown.png",
         "idCategory": 4
     },
     {
@@ -141,15 +156,17 @@
         "descItem": "Ring imbued with restorative enchantments.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/ring.png",
         "idCategory": 4
     },
     {
         "idItem": 17,
-        "nameItem": "Dragon Scale",
+        "nameItem": "Ruby",
         "price": "800",
-        "descItem": "Rare scale from ancient dragon hide.",
+        "descItem": "Rare material from deep caverns.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/ruby.png",
         "idCategory": 5
     },
     {
@@ -159,6 +176,7 @@
         "descItem": "Lightweight metal forged by dwarves.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/mithril-ore.png",
         "idCategory": 5
     },
     {
@@ -168,24 +186,27 @@
         "descItem": "Crystal pulsing with raw magic.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/arcane-crystal.png",
         "idCategory": 5
     },
     {
         "idItem": 20,
-        "nameItem": "Phoenix Feather",
+        "nameItem": "Eternity Beef",
         "price": "1400",
-        "descItem": "Feather from the firebird rebirth.",
+        "descItem": "It can feed everyone.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/eternity-beef.png",
         "idCategory": 5
     },
     {
         "idItem": 21,
-        "nameItem": "Elven Tiara",
+        "nameItem": "Gold Bracelet",
         "price": "1800",
-        "descItem": "Elegant crown of ancient elven silver.",
+        "descItem": "Elegant bracelet of ancient age.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/gold-bracelet.png",
         "idCategory": 6
     },
     {
@@ -195,24 +216,27 @@
         "descItem": "Necklace with fire-infused ruby pendant.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/ruby-necklace.png",
         "idCategory": 6
     },
     {
         "idItem": 23,
-        "nameItem": "Sapphire Earrings",
+        "nameItem": "Black Clover",
         "price": "2100",
-        "descItem": "Earrings channeling mystical sapphire power.",
+        "descItem": "It hears everything and everyone.",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/black-clover.png",
         "idCategory": 6
     },
     {
         "idItem": 24,
-        "nameItem": "Gold Rune Bracelet",
+        "nameItem": "Trina Card",
         "price": "3200",
-        "descItem": "Bracelet etched with protective runes.",
+        "descItem": "How cunning you are, Joker!",
         "inCart": 0,
         "countItem": 1,
+        "imageLink": "/images/items/card.png",
         "idCategory": 6
     }
 ]

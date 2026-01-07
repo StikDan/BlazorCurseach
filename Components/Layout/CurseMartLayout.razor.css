@@ -53,36 +53,3 @@ main {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(177, 80, 0, 0.4);
 }
-
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: #121212;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-}
-
-.cart-button {
-    position: relative;
-    border: none;
-    background: transparent;
-    color: #d1d1d1;
-    cursor: pointer;
-    padding: 8px 12px;
-}
-
-.cart-icon {
-    transition: transform 0.15s ease;
-    width: 35px;
-    height: auto;
-}
-
-.cart-button:hover .cart-icon {
-    transform: scale(1.1);
-}
