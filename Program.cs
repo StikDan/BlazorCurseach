@@ -17,6 +17,7 @@ builder.Services.AddScoped<HashService>();
 builder.Services.AddScoped<LinqService>();
 builder.Services.AddScoped<NavigationService>();
 builder.Services.AddScoped<ClientService<Client>>();
+builder.Services.AddScoped<OrderState>();
 
 builder.Services.AddControllers();
 builder.Services.AddHttpClient();

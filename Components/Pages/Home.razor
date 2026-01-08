@@ -6,6 +6,7 @@
 @inject HttpClient httpClient
 @inject NavigationManager navigationManager
 @inject LinqService linqService
+@inject OrderState orderState
 
 <main>
     <div class="search-container">
@@ -19,7 +20,7 @@
     <ul class="item-cards">
         @foreach(var item in items ?? new())
         {
-            <li class="item-card">
+            <li class="item-card" @onclick="() => orderState.OpenDialog(item)">
                 <div class="item-image" style="background-image: url('@item.imageLink')"></div>
                 <div class="item-info">
                     <span class="title">@item.nameItem</span>
@@ -29,6 +30,11 @@
             </li>
         }
     </ul>
+
+    @if (orderState.IsModalOpen)
+    {
+        <CardDialog />
+    }
 
     <footer>
         <button class="cart-button" @onclick="navigationService.ToCart">

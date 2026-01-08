@@ -1,0 +1,28 @@
+@using BlazorCurseach.Models
+@using BlazorCurseach.Services
+@inject OrderState orderState
+
+@if (orderState.IsModalOpen)
+{
+    <div class="card-dialog-container">
+        <div class="dialog-overlay" @onclick="orderState.CloseDialog"></div>
+        <div class="dialog-content">
+            <button class="dialog-close" @onclick="orderState.CloseDialog">X</button>
+            
+            <div class="dialog-image">
+                <img src="@orderState.SelectedItem?.imageLink" />
+            </div>
+            
+            <div class="dialog-body">
+                <h2 class="dialog-title">@orderState.SelectedItem?.nameItem</h2>
+                <p class="dialog-desc">@orderState.SelectedItem?.descItem</p>
+                <div class="dialog-price">@orderState.SelectedItem?.price</div>
+                
+                <div class="dialog-actions">
+                    <button class="btn-close-dialog" @onclick="orderState.CloseDialog">Close</button>
+                    <button class="btn-add-cart" @onclick="orderState.AddToCart">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
