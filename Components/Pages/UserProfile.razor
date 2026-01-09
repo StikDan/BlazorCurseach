@@ -1,6 +1,7 @@
 @page "/profile"
 @using BlazorCurseach.Models
 @using BlazorCurseach.Services
+@inject NavigationService navigationService
 @inject AuthService authService
 
 <div class="profile-contanier">
@@ -10,6 +11,9 @@
 
     <button class="btn-log-out" type="submit" @onclick="() => LogOut()">
         Log Out
+    </button>
+    <button class="cart-button" @onclick="navigationService.ToCart">
+            <img src="/images/cart-idle-icon.png" alt="cart-icon" class="cart-icon" style="margin-top: 1em" />
     </button>
 }
 else

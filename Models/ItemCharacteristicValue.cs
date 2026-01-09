@@ -10,6 +10,11 @@ namespace BlazorCurseach.Models;
 public partial class ItemCharacteristicValue
 {
     /// <summary>
+    /// Идентификатор
+    /// </summary>
+    public int idItemCharacteristicValue { get; set; }
+
+    /// <summary>
     /// Айди товара для связи M:M (FK)
     /// </summary>
     public int idItem { get; set; }

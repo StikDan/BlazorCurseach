@@ -13,7 +13,7 @@ public class NavigationService {
         _navigationManager = navigationManager;
     }
             
-    public void SuccessAuth()
+    public void ToHome()
     {
         _navigationManager.NavigateTo("/", forceLoad: true);
     }

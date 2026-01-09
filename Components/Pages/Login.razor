@@ -62,7 +62,7 @@
             await authService.SendDataAsync(newClient);
             errorMessage = $"Welcome {newClient.login}!";
             newClient = new();
-            navigationService.SuccessAuth();
+            navigationService.ToHome();
         }
         else
         {

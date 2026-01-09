@@ -197,13 +197,15 @@ public partial class AppDbContext : DbContext
 
         modelBuilder.Entity<OrderItemTemp>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("OrderItemTemp", tb => tb.HasComment("Таблица для обеспечения связи N:M (Item <-> Order)"));
+            entity.HasKey(e => e.idOrderItemTemp).HasName("PRIMARY");
+            entity.ToTable("OrderItemTemp", tb => tb.HasComment("Таблица для обеспечения связи N:M (Item <-> Order)"));
 
             entity.HasIndex(e => e.idItem, "fk_table1_Item1_idx");
 
             entity.HasIndex(e => e.idOrder, "fk_table1_Order1_idx");
+
+            entity.Property(e => e.idOrderItemTemp)
+                .HasComment("Идентификатор связующей таблицы заказа и товара");
 
             entity.Property(e => e.idItem).HasComment("Айди товара для связи M:M (FK)");
             entity.Property(e => e.idOrder).HasComment("Айди заказа для связи M:M (FK)");
@@ -221,13 +223,15 @@ public partial class AppDbContext : DbContext
 
         modelBuilder.Entity<ItemCharacteristicValue>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("ItemCharacteristicValue", tb => tb.HasComment("Таблица для обеспечения связи N:M (Item <-> ValueCharacteristic)"));
+            entity.HasKey(e => e.idItemCharacteristicValue).HasName("PRIMARY");
+            entity.ToTable("ItemCharacteristicValue", tb => tb.HasComment("Таблица для обеспечения связи N:M (Item <-> ValueCharacteristic)"));
 
             entity.HasIndex(e => e.idItem, "fk_ItemCharacteristicValue_Item1_idx");
 
             entity.HasIndex(e => e.idValueCharacteristic, "fk_ItemCharacteristicValue_ValueCharacteristic1_idx");
+
+            entity.Property(e => e.idItemCharacteristicValue)
+                .HasComment("Идентификатор");
 
             entity.Property(e => e.idItem).HasComment("Айди товара для связи M:M (FK)");
             entity.Property(e => e.idValueCharacteristic).HasComment("Айди значения характеристики для связи M:M (FK)");

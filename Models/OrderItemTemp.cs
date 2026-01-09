@@ -9,6 +9,11 @@ namespace BlazorCurseach.Models;
 public partial class OrderItemTemp
 {
     /// <summary>
+    /// Идентификатор связующей таблицы заказа и товара
+    /// </summary>
+    public int idOrderItemTemp { get; set; }
+
+    /// <summary>
     /// Айди товара для связи M:M (FK)
     /// </summary>
     public int idItem { get; set; }

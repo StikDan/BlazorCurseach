@@ -74,4 +74,23 @@ public class LinqService
         
         return result;
     }
+
+    public async Task<Order> CreateOrderAsync(Order order, List<Item> items)
+    {
+        _db.Orders.Add(order);
+        await _db.SaveChangesAsync();
+
+        foreach (var item in items)
+        {
+            var orderItem = new OrderItemTemp
+            {
+                idOrder = order.idOrder,
+                idItem = item.idItem
+            };
+            _db.OrderItemTemps.Add(orderItem);
+        }
+
+        await _db.SaveChangesAsync();
+        return order;
+    }
 }

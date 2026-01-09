@@ -6,16 +6,16 @@ namespace BlazorCurseach.Services;
 
 public class OrderState
 {
-    private readonly ProtectedLocalStorage _localStorage;
+    private readonly ProtectedSessionStorage _protectedSessionStorage;
     
     public bool isModalOpen { get; private set; }
     private bool isCartLoaded = false;
     public Item? selectedItem { get; private set; }
-    public List<Item>? cartItems { get; private set; } = new();
+    public List<Item> cartItems { get; private set; } = new();
 
-    public OrderState(ProtectedLocalStorage localStorage)
+    public OrderState(ProtectedSessionStorage protectedSessionStorage)
     {
-        _localStorage = localStorage;
+        _protectedSessionStorage = protectedSessionStorage;
     }
 
     public void OpenDialog(Item item)
@@ -34,7 +34,7 @@ public class OrderState
     {
         if (isCartLoaded) return;
 
-        var result = await _localStorage.GetAsync<List<Item>>("Cart");
+        var result = await _protectedSessionStorage.GetAsync<List<Item>>("Cart");
         if (result.Success && result.Value != null)
             cartItems = result.Value;
 
@@ -43,7 +43,7 @@ public class OrderState
 
     public async Task SendCartAsync()
     {
-        await _localStorage.SetAsync("Cart", cartItems);
+        await _protectedSessionStorage.SetAsync("Cart", cartItems);
     }
 
     public async Task AddToCart()
@@ -53,7 +53,6 @@ public class OrderState
         if (selectedItem != null)
         {
             cartItems.Add(selectedItem);
-            Console.WriteLine($"Count: {cartItems.Count}");
             await SendCartAsync();
         }
         CloseDialog();

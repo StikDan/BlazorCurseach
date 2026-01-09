@@ -52,6 +52,6 @@
         registationMessage = $"Welcome {client.login}!";
         await linqService.InsertClient(client);
         await authService.SendDataAsync(client);
-        navigationService.SuccessAuth();
+        navigationService.ToHome();
     }
 }

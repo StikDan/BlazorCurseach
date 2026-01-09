@@ -1,3 +1,94 @@
 @page "/orders"
+@using BlazorCurseach.Models
+@using BlazorCurseach.Services
+@inject OrderState orderState
+@inject AuthService authService
+@inject LinqService linqService
+@inject NavigationService navigationService
 
-<p>Orders:</p>
+<div class="order-container">
+    <h2>Create Order</h2>
+
+    @if (isSessionEmpty)
+    {
+        <p>Please <a href="/login">Login</a> or <a href="/join">Sign up</a> to create an order.</p>
+    }
+    else
+    {
+        <div class="order-content">
+            <div class="order-items-section">
+                <h3>Order Items</h3>
+                <ul class="order-items-list">
+                    @foreach (var item in orderState.cartItems)
+                    {
+                        <li class="order-item">
+                            <div class="order-item-image" style="background-image: url('@item.imageLink')"></div>
+                            <div class="order-item-info">
+                                <div class="order-item-title">@item.nameItem</div>
+                                <span class="order-item-price">@item.price g</span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                
+                <div class="order-total">
+                    <div class="order-total-label">Total:</div>
+                    <div class="order-total-price">@(orderState.cartItems.Sum(x => x.price)) g</div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-submit-order" @onclick="MakeOrder"> Place Order </button>
+                <button type="button" class="btn-cancel-order" @onclick="CancelOrder"> Cancel </button>   
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    protected bool isSessionEmpty = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            isSessionEmpty = await authService.IsStorageEmptyAsync();
+            await orderState.IsCartLoadedAsync();
+            StateHasChanged();
+        }
+    }
+
+    private async Task MakeOrder()
+    {
+        var currentClient = await authService.LoadDataAsync();
+
+        if(currentClient == null)
+            return;
+
+        var allClients = await linqService.SelectClients();
+        var dbClient = allClients.FirstOrDefault(c => c.login == currentClient.login && c.password == currentClient.password);
+        
+        if (dbClient == null)
+            return;
+
+        var order = new Order
+        {
+            idClient = dbClient.idClient,
+            dateCreated = DateTime.Now,
+            descOrder = "Received",
+            idStatusOrder = 2, // "Received"
+        };
+
+        await linqService.CreateOrderAsync(order, orderState.cartItems);
+
+        orderState.cartItems.Clear();
+        await orderState.SendCartAsync();
+
+        navigationService.ToHome();
+    }
+
+    private void CancelOrder()
+    {
+        navigationService.ToCart();
+    }
+}
