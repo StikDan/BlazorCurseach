@@ -274,6 +274,65 @@ h1:focus {
 
 /*Cursemart Cart*/
 
+.cart-items-container {
+    max-width: 400px;
+    margin: 16px auto;
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 16px;
+    border: 1px solid rgba(220, 157, 20, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+}
+
+.cart-item:hover {
+    background: rgba(177, 80, 0, 0.1);
+    border-radius: 12px;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(220, 157, 20, 0.3);
+    flex-shrink: 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #d1d1d1;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-item-price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #d1d1d1;
+    background: #b150009f;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(177, 80, 0, 0.3);
+    display: inline-block;
+    margin-top: 4px;
+}
+
 .cart-container h2, p,
 .profile-contanier h2, p {
     color: #d1d1d1;
@@ -314,6 +373,87 @@ footer {
 
 .cart-button:hover .cart-icon {
     transform: scale(1.1);
+}
+
+.btn-add-cart {
+    background: #121212;
+    border: 1px solid rgba(220, 157, 20, 0.3);
+    border-radius: 8px;
+    color: #d1d1d1;
+    padding: 14px 28px;
+    font-weight: 600;
+    font-size: 1rem;              
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.btn-add-cart:hover {
+    background: #b15000;
+    border-color: #b15000;
+    color: #121212;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(177, 80, 0, 0.4);
+}
+
+.btn-delete-cart {
+    width: 36px;
+    height: 36px;
+    border: 2px solid rgba(220, 157, 20, 0.3);
+    background: rgba(177, 80, 0, 0.2);
+    border-radius: 50%;
+    color: #d1d1d1;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.btn-delete-cart:hover {
+    background: #b15000b9;
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(220, 20, 60, 0.4);
+}
+
+.cart-total {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(220, 157, 20, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.cart-total-price {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #d1d1d1;
+    text-align: left;
+}
+
+.btn-order {
+    background: #b15000bb;
+    border: none;
+    border-radius: 12px;
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 15px rgba(177, 80, 0, 0.4);
+    align-self: flex-start;
+}
+
+.btn-order:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(177, 80, 0, 0.6);
 }
 
 /*ITEM-CARDS*/
@@ -557,7 +697,6 @@ footer {
 .characteristic-group:hover {
     background-color: rgba(177, 80, 0, 0.1);
     border-radius: 4px;
-    padding-left: 6px;
     padding-right: 6px;
 }
 
@@ -625,29 +764,6 @@ footer {
 
 .btn-close-dialog:hover {
     background: #771919;
-    border-color: #b15000;
-    color: #121212;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(177, 80, 0, 0.4);
-}
-
-.btn-add-cart {
-    background: #121212;
-    border: 1px solid rgba(220, 157, 20, 0.3);
-    border-radius: 8px;
-    color: #d1d1d1;
-    padding: 14px 28px;
-    font-weight: 600;
-    font-size: 1rem;              
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.btn-add-cart:hover {
-    background: #b15000;
     border-color: #b15000;
     color: #121212;
     transform: translateY(-1px);

@@ -1,11 +1,12 @@
 @page "/cart"
+@using BlazorCurseach.Models
 @using BlazorCurseach.Services
 @inject OrderState orderState
 @inject AuthService authService
 @inject NavigationService navigationService
   
 <div class="cart-container">
-  <h2>Your Cart:</h2>
+    <h2>Your Cart:</h2>
 
     @if(isSessionEmpty)
     {
@@ -13,16 +14,32 @@
     }
     else
     {
-        @if (orderState.cartItems != null && orderState.cartItems.Any())
+        @if (orderState.cartItems?.Any() == true)
         {
-        <ul>
-            @foreach (var item in orderState.cartItems)
-            {
-                <li>
-                    <strong>@item.nameItem</strong> – @item.price g
-                </li>
-            }
-        </ul>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                @foreach (var item in orderState.cartItems)
+                {
+                    <li class="cart-item">
+                        <div class="cart-item-image" style="background-image: url('@item.imageLink')"></div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">@item.nameItem</div>
+                            <span class="cart-item-price">@item.price g</span>
+                        </div>
+                        <button class="btn-delete-cart" @onclick="() => orderState.DeleteFromCartAsync(item)">
+                            <span>X</span>
+                        </button>
+                    </li>
+                }
+            </ul>
+            
+            <div class="cart-total">
+                <div class="cart-total-price">
+                    Total: @(orderState.cartItems.Sum(x => x.price)) g
+                </div>
+                <button class="btn-order" @onclick="PlaceOrder">
+                    Order
+                </button>
+            </div>
         }
         else
         {
@@ -30,6 +47,7 @@
         }
     }
 </div>
+
 
 @code {
     protected bool isSessionEmpty = false;
@@ -40,5 +58,10 @@
             isSessionEmpty = await authService.IsStorageEmptyAsync();
             await orderState.IsCartLoadedAsync();
             StateHasChanged();
+    }
+
+    private void PlaceOrder()
+    {
+        navigationService.ToOrder();
     }
 }

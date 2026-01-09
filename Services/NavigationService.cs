@@ -37,4 +37,9 @@ public class NavigationService {
     {
         _navigationManager.NavigateTo("/cart");
     }
+
+    public void ToOrder()
+    {
+        _navigationManager.NavigateTo("/orders");
+    }
 }

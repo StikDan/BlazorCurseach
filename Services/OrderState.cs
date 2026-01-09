@@ -58,4 +58,10 @@ public class OrderState
         }
         CloseDialog();
     }
+
+    public async Task DeleteFromCartAsync(Item item)
+    {
+        cartItems.Remove(item);
+        await SendCartAsync();
+    }
 }
