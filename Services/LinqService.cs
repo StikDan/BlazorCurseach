@@ -54,4 +54,24 @@ public class LinqService
     {
         return await _db.Items.ToListAsync();
     }
+
+    public async Task<Dictionary<string, string>> GetItemCharacteristicsAsync(int itemId)
+    {
+        var itemValues = await _db.ItemCharacteristicValues
+            .Include(icv => icv.idValueCharacteristicNavigation)
+                .ThenInclude(vc => vc.idCharacteristicItemNavigation)
+            .Where(icv => icv.idItem == itemId)
+            .ToListAsync();
+        
+        var result = new Dictionary<string, string>();
+        
+        foreach (var itemValue in itemValues)
+        {
+            var valueChar = itemValue.idValueCharacteristicNavigation;
+            var charName = valueChar.idCharacteristicItemNavigation.nameCharacteristicItem;
+            result[charName] = valueChar.selfValue;
+        }
+        
+        return result;
+    }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using BlazorCurseach.Models;
@@ -23,6 +23,8 @@ public partial class AppDbContext : DbContext
     public virtual DbSet<Order> Orders { get; set; }
 
     public virtual DbSet<OrderItemTemp> OrderItemTemps { get; set; }
+
+    public virtual DbSet<ItemCharacteristicValue> ItemCharacteristicValues { get; set; }
 
     public virtual DbSet<StatusOrder> StatusOrders { get; set; }
 
@@ -215,6 +217,30 @@ public partial class AppDbContext : DbContext
                 .HasForeignKey(d => d.idOrder)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_table1_Order1");
+        });
+
+        modelBuilder.Entity<ItemCharacteristicValue>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("ItemCharacteristicValue", tb => tb.HasComment("Таблица для обеспечения связи N:M (Item <-> ValueCharacteristic)"));
+
+            entity.HasIndex(e => e.idItem, "fk_ItemCharacteristicValue_Item1_idx");
+
+            entity.HasIndex(e => e.idValueCharacteristic, "fk_ItemCharacteristicValue_ValueCharacteristic1_idx");
+
+            entity.Property(e => e.idItem).HasComment("Айди товара для связи M:M (FK)");
+            entity.Property(e => e.idValueCharacteristic).HasComment("Айди значения характеристики для связи M:M (FK)");
+
+            entity.HasOne(d => d.idItemNavigation).WithMany()
+                .HasForeignKey(d => d.idItem)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_ItemCharacteristicValue_Item1");
+
+            entity.HasOne(d => d.idValueCharacteristicNavigation).WithMany()
+                .HasForeignKey(d => d.idValueCharacteristic)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_ItemCharacteristicValue_ValueCharacteristic1");
         });
 
         modelBuilder.Entity<StatusOrder>(entity =>

@@ -475,7 +475,7 @@ footer {
 }
 
 .dialog-image {
-    height: 350px;
+    height: 250px;
     background: linear-gradient(135deg, #1a1a1a 0%, #5c1313 50%, #1a1a1a 100%);
     overflow: hidden;
     position: relative;
@@ -489,30 +489,102 @@ footer {
 }
 
 .dialog-body {
-    padding: 30px;
+    padding: 15px;
     color: #d1d1d1;
 }
 
 .dialog-title {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: #d1d1d1;
 }
 
 .dialog-desc {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
     color: #b3b3b3;
 }
 
+.dialog-characteristics {
+    margin: 10px 0;
+    padding: 8px;
+    background: #121212;
+    border-radius: 8px;
+    border: 1px solid rgba(220, 157, 20, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    max-height: 200px;
+    overflow-y: auto;
+    animation: fadeInCharacteristics 0.5s ease-in-out;
+}
+
+@keyframes fadeInCharacteristics {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.characteristic-group {
+    display: flex;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(220, 157, 20, 0.15);
+    transition: background-color 0.2s ease;
+    animation: slideInCharacter 0.4s ease-out backwards;
+}
+
+@keyframes slideInCharacter {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.characteristic-group:last-child {
+    border-bottom: none;
+}
+
+.characteristic-group:hover {
+    background-color: rgba(177, 80, 0, 0.1);
+    border-radius: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.char-name {
+    font-weight: 600;
+    color: #d1d1d1;
+    font-size: 0.95rem;
+    min-width: 120px;
+    margin-right: 10px;
+}
+
+.char-value {
+    color: #b3b3b3;
+    font-size: 0.9rem;
+    padding: 4px 12px;
+    background: rgba(177, 80, 0, 0.2);
+    border-radius: 4px;
+    border: 1px solid rgba(177, 80, 0, 0.3);
+    flex: 1;
+}
+
 .dialog-price {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #d1d1d1;
-    margin-bottom: 30px;
-    padding: 12px 24px;
+    margin-bottom: 15px;
+    padding: 8px 18px;
     background: #b15000b9;
     border-radius: 999px;
     display: inline-block;
