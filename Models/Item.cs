@@ -49,4 +49,5 @@ public partial class Item
     public int idCategory { get; set; }
 
     public virtual Category idCategoryNavigation { get; set; } = null!;
+    //public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

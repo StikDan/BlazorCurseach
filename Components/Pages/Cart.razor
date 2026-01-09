@@ -1,5 +1,6 @@
 @page "/cart"
 @using BlazorCurseach.Services
+@inject OrderState orderState
 @inject AuthService authService
 @inject NavigationService navigationService
   
@@ -12,7 +13,21 @@
     }
     else
     {
-        <p>Your Items!</p>
+        @if (orderState.cartItems != null && orderState.cartItems.Any())
+        {
+        <ul>
+            @foreach (var item in orderState.cartItems)
+            {
+                <li>
+                    <strong>@item.nameItem</strong> – @item.price g
+                </li>
+            }
+        </ul>
+        }
+        else
+        {
+            <p>Your cart is empty.</p>
+        }
     }
 </div>
 
@@ -23,6 +38,7 @@
     {
         if(firstRender)
             isSessionEmpty = await authService.IsStorageEmptyAsync();
+            await orderState.IsCartLoadedAsync();
             StateHasChanged();
     }
 }

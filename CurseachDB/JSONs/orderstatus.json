@@ -1,0 +1,22 @@
+[
+    {
+		"idStatusOrder": 1,
+		"nameStatus":"Delivered"
+    },
+    {
+		"idStatusOrder": 2,
+		"nameStatus":"Received"
+    },
+	{
+		"idStatusOrder": 3,
+		"nameStatus":"Assembled"
+    },
+	{
+		"idStatusOrder": 4,
+		"nameStatus":"Canceled"
+    },
+	{
+		"idStatusOrder": 5,
+		"nameStatus":"En Route"
+    }
+]

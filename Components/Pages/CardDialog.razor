@@ -2,27 +2,27 @@
 @using BlazorCurseach.Services
 @inject OrderState orderState
 
-@if (orderState.IsModalOpen)
-{
-    <div class="card-dialog-container">
-        <div class="dialog-overlay" @onclick="orderState.CloseDialog"></div>
-        <div class="dialog-content">
-            <button class="dialog-close" @onclick="orderState.CloseDialog">X</button>
-            
-            <div class="dialog-image">
-                <img src="@orderState.SelectedItem?.imageLink" />
+<div class="card-dialog-container">
+    <div class="dialog-overlay" @onclick="orderState.CloseDialog"></div>
+    <div class="dialog-content">
+        <button class="dialog-close" @onclick="orderState.CloseDialog">X</button>
+        
+        <div class="dialog-image">
+            <img src="@orderState.selectedItem?.imageLink" />
+        </div>
+        
+        <div class="dialog-body">
+            <h2 class="dialog-title">@orderState.selectedItem?.nameItem</h2>
+            <p class="dialog-desc">@orderState.selectedItem?.descItem</p>
+            <div class="dialog-price">
+                @orderState.selectedItem?.price
+                <img class="price-icon" src="/images/gold-coin.png" />
             </div>
             
-            <div class="dialog-body">
-                <h2 class="dialog-title">@orderState.SelectedItem?.nameItem</h2>
-                <p class="dialog-desc">@orderState.SelectedItem?.descItem</p>
-                <div class="dialog-price">@orderState.SelectedItem?.price</div>
-                
-                <div class="dialog-actions">
-                    <button class="btn-close-dialog" @onclick="orderState.CloseDialog">Close</button>
-                    <button class="btn-add-cart" @onclick="orderState.AddToCart">Add to cart</button>
-                </div>
+            <div class="dialog-actions">
+                <button class="btn-close-dialog" @onclick="orderState.CloseDialog">Close</button>
+                <button class="btn-add-cart" @onclick="orderState.AddToCart">Add to cart</button>
             </div>
         </div>
     </div>
-}
+</div>

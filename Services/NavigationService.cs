@@ -35,6 +35,6 @@ public class NavigationService {
 
     public void ToCart()
     {
-        _navigationManager.NavigateTo("/cart", forceLoad: true);
+        _navigationManager.NavigateTo("/cart");
     }
 }

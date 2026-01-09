@@ -329,6 +329,7 @@ footer {
 }
 
 .item-cards li {
+    display: inline-block;
     position: relative;
     height: 340px;
     border-radius: 20px;
@@ -341,6 +342,7 @@ footer {
 }
 
 .item-cards li::before {
+    display: inline-block;
     content: "";
     position: absolute;
     inset: 0;
@@ -374,6 +376,7 @@ footer {
 }
 
 .item-card::after {
+    display: inline-block;
     content: "";
     position: absolute;
     inset: 0;
@@ -405,6 +408,16 @@ footer {
     font-weight: 600;
     font-size: 0.95rem;
 }
+
+.price-icon {
+    width: 30px; 
+    height: 30px; 
+    vertical-align: middle; 
+    margin-left: 3px; 
+    margin-bottom: 10px;
+}
+
+/*--- CARD-DIALOG-WINDOW ---*/
 
 .card-dialog-container {
     position: fixed;
@@ -528,9 +541,9 @@ footer {
     border: 1px solid rgba(220, 157, 20, 0.3);
     border-radius: 8px;
     color: #d1d1d1;
-    padding: 14px 28px;           /* ← размер сохранен */
+    padding: 14px 28px;
     font-weight: 600;
-    font-size: 1rem;              /* ← размер сохранен */
+    font-size: 1rem;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
@@ -551,9 +564,9 @@ footer {
     border: 1px solid rgba(220, 157, 20, 0.3);
     border-radius: 8px;
     color: #d1d1d1;
-    padding: 14px 28px;           /* ← размер сохранен */
+    padding: 14px 28px;
     font-weight: 600;
-    font-size: 1rem;              /* ← размер сохранен */
+    font-size: 1rem;              
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
