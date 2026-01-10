@@ -21,7 +21,7 @@
         </button>
     </div>
 </div>
-    <button class="btn-log-out" type="submit" @onclick="() => LogOut()">
+    <button class="btn-log-out" type="submit" @onclick="@(async () => await LogOut())"> 
         Log Out
     </button>
 }

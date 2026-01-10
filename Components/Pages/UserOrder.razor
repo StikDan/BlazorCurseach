@@ -5,6 +5,7 @@
 @inject AuthService authService
 @inject LinqService linqService
 @inject NavigationService navigationService
+@inject IJSRuntime js
 
 <div class="order-container">
     <h2>Create Order</h2>
@@ -67,8 +68,6 @@
 
         var allClients = await linqService.SelectClients();
         var dbClient = allClients.FirstOrDefault(c => c.login == currentClient.login && c.password == currentClient.password);
-        Console.WriteLine($"{currentClient.login}");
-        Console.WriteLine($"{currentClient.password}");
         
         if (dbClient == null)
             return;
@@ -90,8 +89,13 @@
         navigationService.ToHome();
     }
 
-    private void CancelOrder()
+    private async Task CancelOrder()
     {
-        navigationService.ToCart();
+        if (await js.InvokeAsync<bool>(
+        "confirm",
+        $"""Do you want to cancel an Order?"""))
+        {
+            navigationService.ToCart();
+        }
     }
 }

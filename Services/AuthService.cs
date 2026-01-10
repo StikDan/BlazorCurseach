@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components;
 using BlazorCurseach.Data;
 using BlazorCurseach.Models;
 using BlazorCurseach.Interfaces;
+using Microsoft.JSInterop;
 
 namespace BlazorCurseach.Services;
 
@@ -12,18 +13,21 @@ public class AuthService
     private readonly AppDbContext _db;
     private readonly LinqService linqService; //maybe get; set;
     private readonly NavigationService navigationService; //maybe get; set;
+    private readonly IJSRuntime _js;
 
     public AuthService(
             ProtectedSessionStorage protectedSessionStorage,
             AppDbContext db,
             LinqService linqService,
-            NavigationService navigationService
+            NavigationService navigationService,
+            IJSRuntime js
         )
     {
         _protectedSessionStorage = protectedSessionStorage;
         _db = db;
         this.linqService = new LinqService(_db);
         this.navigationService = navigationService;
+        _js = js;
     }
 
     public async Task SendDataAsync(Client Client)
@@ -39,8 +43,13 @@ public class AuthService
 
     public async Task LogOut()
     {
-        await _protectedSessionStorage.DeleteAsync("CurrentClient");
-        navigationService.ToHome();
+        if (await _js.InvokeAsync<bool>(
+        "confirm",
+        $"""Do you want to Log Out?"""))
+        {
+            await _protectedSessionStorage.DeleteAsync("CurrentClient");
+            navigationService.ToHome();
+        }
     }
 
     public Client MakeClient(Guest guest, Client client)
