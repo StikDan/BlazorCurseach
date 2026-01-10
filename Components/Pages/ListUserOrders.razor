@@ -51,6 +51,8 @@
         if (firstRender)
         {
             client = await authService.LoadDataAsync();
+            if(client == null) return;
+
             var clientData = await linqService.FindClient(client);
             clientData.Add(client);
 

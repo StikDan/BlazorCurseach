@@ -36,7 +36,12 @@
         <InputText @bind-Value="client.password" type="password" class="form-control" placeholder="Password" />
         <ValidationMessage For="@(() => client.password)" />
 
-        <button class="btn btn-primary" type="submit"> Create account </button>
+        <button class="btn btn-primary" type="submit" disabled="@isLoading">
+        @if(isLoading)
+            { <span>Entering...</span> }
+        else
+            { <span>Create account</span> }
+        </button>
     </div>
         @if (!string.IsNullOrEmpty(successMessage) && successStatus)
         {
@@ -51,13 +56,13 @@
 @code {
     protected Client client { get; set; } = new();
     protected int defaultRole = 1;
-    protected bool errorStatus = false;
-    protected bool successStatus = false;
-    protected string successMessage = "";
-    protected string errorMessage = "";
+    protected bool isLoading, errorStatus, successStatus = false;
+    protected string successMessage, errorMessage = "";
 
     private async Task HandleClientData()
     {
+        isLoading = true;
+
         string hashPassword = hashService.CalculateHashData(client.password);
         client.password = hashPassword;
 
@@ -68,12 +73,16 @@
             successStatus = true;
             await linqService.InsertClient(client);
             await authService.SendDataAsync(client);
+            client = new();
             navigationService.ToHome();
+            isLoading = false;
         }
         catch (DbUpdateException)
         {
+            client = new();
             errorMessage = "Login already taken.";
             errorStatus = true;
+            isLoading = false;
         }
     }
 }

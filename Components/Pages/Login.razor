@@ -63,14 +63,14 @@
 
         if(isValid)
         {
+            guest = new();
             await authService.SendDataAsync(newClient);
             successMessage = $"Welcome {newClient.login}!";
-            newClient = new();
             navigationService.ToHome();
         }
         else
         {
-            newClient = new();
+            guest = new();
             errorMessage = "Wrong login or password!";
         }
     }

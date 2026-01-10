@@ -39,7 +39,12 @@
             </div>
 
             <div class="form-actions">
-                <button type="submit" class="btn-submit-order" @onclick="MakeOrder"> Place Order </button>
+                <button type="submit" class="btn-submit-order" disabled="@isLoading" @onclick="MakeOrder">
+                @if(isLoading)
+                    { <span>Entering...</span> }
+                else
+                    { <span>Place Order</span> }
+                </button>
                 <button type="button" class="btn-cancel-order" @onclick="CancelOrder"> Cancel </button>   
             </div>
         </div>
@@ -48,6 +53,7 @@
 
 @code {
     protected bool isSessionEmpty = false;
+    protected bool isLoading = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -61,6 +67,8 @@
 
     private async Task MakeOrder()
     {
+        isLoading = true;
+
         var currentClient = await authService.LoadDataAsync();
 
         if(currentClient == null)
@@ -87,6 +95,7 @@
         await orderState.SendCartAsync();
 
         navigationService.ToHome();
+        isLoading = false;
     }
 
     private async Task CancelOrder()
