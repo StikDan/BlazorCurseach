@@ -35,3 +35,5 @@ SELECT * FROM Marketplace.Item;
 SELECT * FROM Marketplace.ValueCharacteristic;
 
 SELECT * FROM Marketplace.StatusOrder;
+
+SELECT * FROM Marketplace.Order;

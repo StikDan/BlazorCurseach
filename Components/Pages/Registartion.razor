@@ -1,9 +1,11 @@
 @page "/join"
 @using System.ComponentModel.DataAnnotations
+@using Microsoft.EntityFrameworkCore;
 @using BlazorCurseach.Models
 @using BlazorCurseach.Services
 @inject LinqService linqService
 @inject AuthService authService
+@inject HashService hashService
 @inject NavigationService navigationService
 
 <EditForm Model="@client" OnValidSubmit="HandleClientData">
@@ -36,22 +38,42 @@
 
         <button class="btn btn-primary" type="submit"> Create account </button>
     </div>
-        @if (!string.IsNullOrEmpty(registationMessage))
+        @if (!string.IsNullOrEmpty(successMessage) && successStatus)
         {
-            <div class="alert alert-danger">@registationMessage</div>
+            <div class="alert alert-success">@successMessage</div>
+        }
+        else if (!string.IsNullOrEmpty(errorMessage) && errorStatus)
+        {
+            <div class="alert alert-danger">@errorMessage</div>
         }
 </EditForm>
 
 @code {
     protected Client client { get; set; } = new();
     protected int defaultRole = 1;
-    protected string registationMessage = "";
+    protected bool errorStatus = false;
+    protected bool successStatus = false;
+    protected string successMessage = "";
+    protected string errorMessage = "";
 
     private async Task HandleClientData()
     {
-        registationMessage = $"Welcome {client.login}!";
-        await linqService.InsertClient(client);
-        await authService.SendDataAsync(client);
-        navigationService.ToHome();
+        string hashPassword = hashService.CalculateHashData(client.password);
+        client.password = hashPassword;
+
+        if(successStatus)
+            successMessage = $"Welcome {client.login}!";
+        try
+        {
+            successStatus = true;
+            await linqService.InsertClient(client);
+            await authService.SendDataAsync(client);
+            navigationService.ToHome();
+        }
+        catch (DbUpdateException)
+        {
+            errorMessage = "Login already taken.";
+            errorStatus = true;
+        }
     }
 }

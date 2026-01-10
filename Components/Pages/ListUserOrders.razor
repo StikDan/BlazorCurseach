@@ -3,6 +3,7 @@
 @using BlazorCurseach.Services
 @inject AuthService authService
 @inject LinqService linqService
+@inject NavigationService navigationService
 
 <div class="myorders-container">
     <h2>Your Orders</h2>
@@ -51,6 +52,7 @@
         {
             client = await authService.LoadDataAsync();
             var clientData = await linqService.FindClient(client);
+            clientData.Add(client);
 
             if (clientData[0] != null)
             {
@@ -58,6 +60,7 @@
                 orders = allOrders.OrderByDescending(x => x.dateCreated).ToList();
             }
             StateHasChanged();
+            navigationService.ToMyOrders();
         }
     }
 }

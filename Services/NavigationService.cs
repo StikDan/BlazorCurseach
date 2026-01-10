@@ -42,4 +42,9 @@ public class NavigationService {
     {
         _navigationManager.NavigateTo("/orders");
     }
+
+    public void ToMyOrders()
+    {
+        _navigationManager.NavigateTo("/myorders");
+    }
 }

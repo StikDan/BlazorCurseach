@@ -67,6 +67,8 @@
 
         var allClients = await linqService.SelectClients();
         var dbClient = allClients.FirstOrDefault(c => c.login == currentClient.login && c.password == currentClient.password);
+        Console.WriteLine($"{currentClient.login}");
+        Console.WriteLine($"{currentClient.password}");
         
         if (dbClient == null)
             return;

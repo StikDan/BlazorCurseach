@@ -102,7 +102,6 @@
     box-shadow: 0 4px 12px rgba(177, 80, 0, 0.4);
 }
 
-
 .alert-danger {
     margin-top: 2%;
 }
@@ -1365,4 +1364,46 @@ footer {
     .myorders-container { padding: 0.4rem 0.1rem; }
     .myorder-card { padding: 1rem 0.6rem; }
     .myorder-header, .order-card-body { font-size: .96rem;}
+}
+
+.order-button {
+    position: relative;
+    border: none;
+    background: local;
+    color: #d1d1d1;
+    cursor: pointer;
+    padding: 8px 12px;
+}
+
+.order-icon {
+    transition: transform 0.15s ease;
+    margin-bottom: 10px;
+    width: 45px;
+    height: auto;
+}
+
+.order-button:hover .order-icon {
+    transform: scale(1.1);
+}
+
+.profile-actions {
+    display: flex;
+    gap: 24px;
+    justify-content: left;
+    margin: 32px 0;
+}
+
+.container-button {
+    background: #121212;
+    padding: 10px;
+    border-radius: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08), 0 1.5px 6px rgba(0,0,0,0.13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.23s;
+}
+
+.container-button:hover {
+    background: #252525;
 }
