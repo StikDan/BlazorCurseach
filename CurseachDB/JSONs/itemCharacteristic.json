@@ -1,445 +1,556 @@
 [
     {
+	  "idItemCharacteristicValue": 1,
       "idItem": 1,
       "idValueCharacteristic": 1
     },
     {
+		"idItemCharacteristicValue": 2,
       "idItem": 1,
       "idValueCharacteristic": 4
     },
     {
+		"idItemCharacteristicValue": 3,
       "idItem": 1,
       "idValueCharacteristic": 10
     },
     {
+		"idItemCharacteristicValue": 4,
       "idItem": 2,
       "idValueCharacteristic": 2
     },
     {
+		"idItemCharacteristicValue": 5,
       "idItem": 2,
       "idValueCharacteristic": 5
     },
     {
+		"idItemCharacteristicValue": 6,
       "idItem": 2,
       "idValueCharacteristic": 11
     },
     {
+		"idItemCharacteristicValue": 7,
       "idItem": 3,
       "idValueCharacteristic": 3
     },
     {
+		"idItemCharacteristicValue": 8,
       "idItem": 3,
       "idValueCharacteristic": 5
     },
     {
+		"idItemCharacteristicValue": 9,
       "idItem": 3,
       "idValueCharacteristic": 10
     },
     {
+		"idItemCharacteristicValue": 10,
       "idItem": 4,
       "idValueCharacteristic": 1
     },
     {
+		"idItemCharacteristicValue": 11,
       "idItem": 4,
       "idValueCharacteristic": 6
     },
     {
+		"idItemCharacteristicValue": 12,
       "idItem": 4,
       "idValueCharacteristic": 10
     },
     {
+		"idItemCharacteristicValue": 13,
       "idItem": 5,
       "idValueCharacteristic": 13
     },
     {
+		"idItemCharacteristicValue": 14,
       "idItem": 5,
       "idValueCharacteristic": 16
     },
     {
+		"idItemCharacteristicValue": 15,
       "idItem": 5,
       "idValueCharacteristic": 20
     },
     {
+		"idItemCharacteristicValue": 16,
       "idItem": 5,
       "idValueCharacteristic": 22
     },
     {
+		"idItemCharacteristicValue": 17,
       "idItem": 6,
       "idValueCharacteristic": 14
     },
     {
+		"idItemCharacteristicValue": 18,
       "idItem": 6,
       "idValueCharacteristic": 16
     },
     {
+		"idItemCharacteristicValue": 19,
       "idItem": 6,
       "idValueCharacteristic": 19
     },
     {
+		"idItemCharacteristicValue": 20,
       "idItem": 5,
       "idValueCharacteristic": 23
     },
     {
+		"idItemCharacteristicValue": 21,
       "idItem": 7,
       "idValueCharacteristic": 14
     },
     {
+		"idItemCharacteristicValue": 22,
       "idItem": 7,
       "idValueCharacteristic": 17
     },
     {
+		"idItemCharacteristicValue": 23,
       "idItem": 7,
       "idValueCharacteristic": 21
     },
     {
+		"idItemCharacteristicValue": 24,
       "idItem": 7,
       "idValueCharacteristic": 23
     },
     {
+		"idItemCharacteristicValue": 25,
       "idItem": 8,
       "idValueCharacteristic": 15
     },
     {
+		"idItemCharacteristicValue": 26,
       "idItem": 8,
       "idValueCharacteristic": 18
     },
     {
+		"idItemCharacteristicValue": 27,
       "idItem": 8,
       "idValueCharacteristic": 20
     },
     {
+		"idItemCharacteristicValue": 28,
       "idItem": 8,
       "idValueCharacteristic": 24
     },
     {
+		"idItemCharacteristicValue": 29,
       "idItem": 9,
       "idValueCharacteristic": 25
     },
     {
+		"idItemCharacteristicValue": 30,
       "idItem": 9,
       "idValueCharacteristic": 28
     },
     {
+		"idItemCharacteristicValue": 31,
       "idItem": 9,
       "idValueCharacteristic": 31
     },
     {
+		"idItemCharacteristicValue": 32,
       "idItem": 9,
       "idValueCharacteristic": 34
     },
     {
+		"idItemCharacteristicValue": 33,
       "idItem": 9,
       "idValueCharacteristic": 39
     },
     {
+		"idItemCharacteristicValue": 34,
       "idItem": 9,
       "idValueCharacteristic": 40
     },
     {
+		"idItemCharacteristicValue": 35,
       "idItem": 10,
       "idValueCharacteristic": 26
     },
     {
+		"idItemCharacteristicValue": 36,
       "idItem": 10,
       "idValueCharacteristic": 29
     },
     {
+		"idItemCharacteristicValue": 37,
       "idItem": 10,
       "idValueCharacteristic": 32
     },
     {
+		"idItemCharacteristicValue": 38,
       "idItem": 10,
       "idValueCharacteristic": 35
     },
     {
+		"idItemCharacteristicValue": 39,
       "idItem": 10,
       "idValueCharacteristic": 38
     },
     {
+		"idItemCharacteristicValue": 40,
       "idItem": 10,
       "idValueCharacteristic": 41
     },
     {
+		"idItemCharacteristicValue": 41,
       "idItem": 11,
       "idValueCharacteristic": 26
     },
     {
+		"idItemCharacteristicValue": 42,
       "idItem": 11,
       "idValueCharacteristic": 29
     },
     {
+		"idItemCharacteristicValue": 43,
       "idItem": 11,
       "idValueCharacteristic": 33
     },
     {
+		"idItemCharacteristicValue": 44,
       "idItem": 11,
       "idValueCharacteristic": 34
     },
     {
+		"idItemCharacteristicValue": 45,
       "idItem": 11,
       "idValueCharacteristic": 39
     },
     {
+		"idItemCharacteristicValue": 46,
       "idItem": 11,
       "idValueCharacteristic": 40
     },
     {
+		"idItemCharacteristicValue": 47,
       "idItem": 12,
       "idValueCharacteristic": 25
     },
     {
+		"idItemCharacteristicValue": 48,
       "idItem": 12,
       "idValueCharacteristic": 28
     },
     {
+		"idItemCharacteristicValue": 49,
       "idItem": 12,
       "idValueCharacteristic": 31
     },
     {
+		"idItemCharacteristicValue": 50,
       "idItem": 12,
       "idValueCharacteristic": 34
     },
     {
+		"idItemCharacteristicValue": 51,
       "idItem": 12,
       "idValueCharacteristic": 37
     },
     {
+		"idItemCharacteristicValue": 52,
       "idItem": 12,
       "idValueCharacteristic": 39
     },
     {
+		"idItemCharacteristicValue": 53,
       "idItem": 13,
       "idValueCharacteristic": 44
     },
     {
+		"idItemCharacteristicValue": 54,
       "idItem": 13,
       "idValueCharacteristic": 47
     },
     {
+		"idItemCharacteristicValue": 55,
       "idItem": 13,
       "idValueCharacteristic": 49
     },
     {
+		"idItemCharacteristicValue": 56,
       "idItem": 13,
       "idValueCharacteristic": 52
     },
     {
+		"idItemCharacteristicValue": 57,
       "idItem": 14,
       "idValueCharacteristic": 44
     },
     {
+		"idItemCharacteristicValue": 58,
       "idItem": 14,
       "idValueCharacteristic": 48
     },
     {
+		"idItemCharacteristicValue": 59,
       "idItem": 14,
       "idValueCharacteristic": 49
     },
     {
+		"idItemCharacteristicValue": 60,
       "idItem": 14,
       "idValueCharacteristic": 54
     },
     {
+		"idItemCharacteristicValue": 61,
       "idItem": 15,
       "idValueCharacteristic": 45
     },
     {
+		"idItemCharacteristicValue": 62,
       "idItem": 15,
       "idValueCharacteristic": 48
     },
     {
+		"idItemCharacteristicValue": 63,
       "idItem": 15,
       "idValueCharacteristic": 51
     },
     {
+		"idItemCharacteristicValue": 64,
       "idItem": 15,
       "idValueCharacteristic": 53
     },
     {
+		"idItemCharacteristicValue": 65,
       "idItem": 16,
       "idValueCharacteristic": 43
     },
     {
+		"idItemCharacteristicValue": 66,
       "idItem": 16,
       "idValueCharacteristic": 49
     },
     {
+		"idItemCharacteristicValue": 67,
       "idItem": 16,
       "idValueCharacteristic": 49
     },
     {
+		"idItemCharacteristicValue": 68,
       "idItem": 16,
       "idValueCharacteristic": 54
     },
     {
+		"idItemCharacteristicValue": 69,
       "idItem": 17,
       "idValueCharacteristic": 55
     },
     {
+		"idItemCharacteristicValue": 70,
       "idItem": 17,
       "idValueCharacteristic": 58
     },
     {
+		"idItemCharacteristicValue":71,
       "idItem": 17,
       "idValueCharacteristic": 61
     },
     {
+		"idItemCharacteristicValue": 72,
       "idItem": 17,
       "idValueCharacteristic": 64
     },
     {
+		"idItemCharacteristicValue": 73,
       "idItem": 17,
       "idValueCharacteristic": 69
     },
     {
+		"idItemCharacteristicValue": 74,
       "idItem": 17,
       "idValueCharacteristic": 71
     },
     {
+		"idItemCharacteristicValue": 75,
       "idItem": 18,
       "idValueCharacteristic": 57
     },
     {
+		"idItemCharacteristicValue": 76,
       "idItem": 18,
       "idValueCharacteristic": 59
     },
     {
+		"idItemCharacteristicValue": 78,
       "idItem": 18,
       "idValueCharacteristic": 63
     },
     {
+		"idItemCharacteristicValue": 79,
       "idItem": 18,
       "idValueCharacteristic": 66
     },
     {
+		"idItemCharacteristicValue": 80,
       "idItem": 18,
       "idValueCharacteristic": 67
     },
     {
+		"idItemCharacteristicValue": 81,
       "idItem": 18,
       "idValueCharacteristic": 71
     },
     {
+		"idItemCharacteristicValue": 82,
       "idItem": 19,
       "idValueCharacteristic": 56
     },
     {
+		"idItemCharacteristicValue": 83,
       "idItem": 19,
       "idValueCharacteristic": 60
     },
     {
+		"idItemCharacteristicValue": 84,
       "idItem": 19,
       "idValueCharacteristic": 62
     },
     {
+		"idItemCharacteristicValue": 85,
       "idItem": 19,
       "idValueCharacteristic": 65
     },
     {
+		"idItemCharacteristicValue": 86,
       "idItem": 19,
       "idValueCharacteristic": 69
     },
     {
+		"idItemCharacteristicValue": 87,
       "idItem": 19,
       "idValueCharacteristic": 72
     },
     {
+		"idItemCharacteristicValue": 88,
       "idItem": 20,
       "idValueCharacteristic": 75
     },
     {
+		"idItemCharacteristicValue": 89,
       "idItem": 20,
       "idValueCharacteristic": 76
     },
     {
+		"idItemCharacteristicValue": 90,
       "idItem": 20,
       "idValueCharacteristic": 80
     },
     {
+		"idItemCharacteristicValue": 91,
       "idItem": 20,
       "idValueCharacteristic": 83
     },
     {
+		"idItemCharacteristicValue": 92,
       "idItem": 20,
       "idValueCharacteristic": 85
     },
     {
+		"idItemCharacteristicValue": 93,
       "idItem": 21,
       "idValueCharacteristic": 73
     },
     {
+		"idItemCharacteristicValue": 94,
       "idItem": 21,
       "idValueCharacteristic": 78
     },
     {
+		"idItemCharacteristicValue": 95,
       "idItem": 21,
       "idValueCharacteristic": 79
     },
     {
+		"idItemCharacteristicValue": 96,
       "idItem": 21,
       "idValueCharacteristic": 82
     },
     {
+		"idItemCharacteristicValue": 97,
       "idItem": 21,
       "idValueCharacteristic": 85
     },
     {
+		"idItemCharacteristicValue": 98,
       "idItem": 22,
       "idValueCharacteristic": 74
     },
     {
+		"idItemCharacteristicValue": 99,
       "idItem": 22,
       "idValueCharacteristic": 77
     },
     {
+		"idItemCharacteristicValue": 100,
       "idItem": 22,
       "idValueCharacteristic": 79
     },
     {
+		"idItemCharacteristicValue": 101,
       "idItem": 22,
       "idValueCharacteristic": 84
     },
     {
+		"idItemCharacteristicValue": 102,
       "idItem": 22,
       "idValueCharacteristic": 85
     },
     {
+		"idItemCharacteristicValue": 103,
       "idItem": 23,
       "idValueCharacteristic": 73
     },
     {
+		"idItemCharacteristicValue": 104,
       "idItem": 23,
       "idValueCharacteristic": 78
     },
     {
+		"idItemCharacteristicValue": 105,
       "idItem": 23,
       "idValueCharacteristic": 81
     },
     {
+		"idItemCharacteristicValue": 106,
       "idItem": 23,
       "idValueCharacteristic": 82
     },
     {
+		"idItemCharacteristicValue": 107,
       "idItem": 23,
       "idValueCharacteristic": 86
     },
     {
+		"idItemCharacteristicValue": 108,
       "idItem": 24,
       "idValueCharacteristic": 74
     },
     {
+		"idItemCharacteristicValue": 109,
       "idItem": 24,
       "idValueCharacteristic": 76
     },
     {
+		"idItemCharacteristicValue": 110,
       "idItem": 24,
       "idValueCharacteristic": 81
     },
     {
+		"idItemCharacteristicValue": 111,
       "idItem": 24,
       "idValueCharacteristic": 84
     },
     {
+		"idItemCharacteristicValue": 112,
       "idItem": 24,
       "idValueCharacteristic": 85
     }

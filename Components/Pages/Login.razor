@@ -50,9 +50,7 @@
         guest.password = hashPassword;
 
         Client newClient = authService.MakeClient(guest, client);
-
         var clientData = await linqService.FindClient(newClient);
-        clientData.Add(newClient);
         
         isValid = await authService.CheckValidClientAsync(clientData);
         isLoading = false;

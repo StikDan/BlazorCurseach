@@ -24,6 +24,11 @@ public partial class Order
     public string? descOrder { get; set; }
 
     /// <summary>
+    /// Общая стоимость заказа
+    /// </summary>
+    public double totalSum { get; set; }
+
+    /// <summary>
     /// Идентификатор статуса заказа (FK)
     /// </summary>
     public int idStatusOrder { get; set; }

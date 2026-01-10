@@ -1,0 +1,63 @@
+@page "/myorders"
+@using BlazorCurseach.Models
+@using BlazorCurseach.Services
+@inject AuthService authService
+@inject LinqService linqService
+
+<div class="myorders-container">
+    <h2>Your Orders</h2>
+
+    @if (!orders.Any())
+    {
+        <div class="myorder-info">No orders found. <a href="/">Add items</a> to your cart first.</div>
+    }
+    else
+    {
+        <div class="myorders-list">
+            @foreach (var order in orders)
+            {
+                <div class="myorder-card">
+                    <div class="myorder-card-header">
+                        <span class="myorder-card-id">Order #@order.idOrder</span>
+                        <span class="myorder-card-date">@order.dateCreated.ToString("yyyy-MM-dd")</span>
+                    </div>
+                    <div class="myorder-card-body">
+                        <div class="myorder-card-status">
+                            Status: <span>@(order.idStatusOrderNavigation?.nameStatus)</span>
+                        </div>
+                        @if (!string.IsNullOrWhiteSpace(order.descOrder))
+                        {
+                            <div class="myorder-card-desc">
+                                <span>@order.descOrder</span>
+                            </div>
+                        }
+                        <div class="myorder-card-sum">
+                            Total: <b>@order.totalSum</b> g
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    protected Client? client {get; set;} = new();
+    protected List<Order> orders = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            client = await authService.LoadDataAsync();
+            var clientData = await linqService.FindClient(client);
+
+            if (clientData[0] != null)
+            {
+                var allOrders = await linqService.GetUserOrders(clientData[0].idClient);
+                orders = allOrders.OrderByDescending(x => x.dateCreated).ToList();
+            }
+            StateHasChanged();
+        }
+    }
+}

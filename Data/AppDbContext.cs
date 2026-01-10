@@ -181,6 +181,7 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.descOrder)
                 .HasMaxLength(400)
                 .HasComment("Описание заказа");
+            entity.Property(e => e.totalSum).HasComment("Общая стоимость заказа");
             entity.Property(e => e.idClient).HasComment("Айди клиента (FK)");
             entity.Property(e => e.idStatusOrder).HasComment("Идентификатор статуса заказа (FK)");
 

@@ -54,9 +54,11 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if(firstRender)
+        {
             isSessionEmpty = await authService.IsStorageEmptyAsync();
             await orderState.IsCartLoadedAsync();
             StateHasChanged();
+        }
     }
 
     private void PlaceOrder()

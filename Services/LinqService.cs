@@ -93,4 +93,22 @@ public class LinqService
         await _db.SaveChangesAsync();
         return order;
     }
+
+    public async Task<List<Order>> GetUserOrders(int clientId)
+    {
+        return await _db.Orders
+            .Where(o => o.idClient == clientId)
+            .OrderByDescending(o => o.dateCreated)
+            .ToListAsync();
+    }
+
+    public async Task<StatusOrder?> GetStatusOrderById(int statusId)
+    {
+        return await _db.StatusOrders.FirstOrDefaultAsync(s => s.idStatusOrder == statusId);
+    }
+
+    public async Task<Client?> GetClientById(int clientId)
+    {
+        return await _db.Clients.FirstOrDefaultAsync(c => c.idClient == clientId);
+    }
 }

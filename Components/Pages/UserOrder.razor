@@ -76,6 +76,7 @@
             idClient = dbClient.idClient,
             dateCreated = DateTime.Now,
             descOrder = "Received",
+            totalSum = orderState.cartItems.Sum(x => x.price),
             idStatusOrder = 2, // "Received"
         };
 
