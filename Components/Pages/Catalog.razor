@@ -93,7 +93,7 @@
         else
         {
             items = allItems
-                .Where(item => Fuzz.PartialRatio(item.nameItem ?? "", query) > 50)
+                .Where(item => Fuzz.PartialRatio(item.nameItem, query) > 50)
                 .ToList();
         }
         
